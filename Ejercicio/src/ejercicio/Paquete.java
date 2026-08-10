@@ -26,6 +26,47 @@ public class Paquete {
         this.fecha_ensamble = fecha_ensamble;
         productos=new ArrayList<>();
     }
+
+    public int getId_paquete() {
+        return id_paquete;
+    }
+
+    public void setId_paquete(int id_paquete) {
+        this.id_paquete = id_paquete;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public double getVolumen() {
+        return volumen;
+    }
+
+    public void setVolumen(double volumen) {
+        this.volumen = volumen;
+    }
+
+    public String getFecha_ensamble() {
+        return fecha_ensamble;
+    }
+
+    public void setFecha_ensamble(String fecha_ensamble) {
+        this.fecha_ensamble = fecha_ensamble;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+    
     public void AgregarProducto(Producto p){
         productos.add(p);
     }

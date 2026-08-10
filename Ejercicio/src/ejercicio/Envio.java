@@ -22,6 +22,39 @@ public class Envio {
         vehiculos = new ArrayList<>();
         
     }
+
+    public int getNumEnvio() {
+        return numEnvio;
+    }
+
+    public void setNumEnvio(int numEnvio) {
+        this.numEnvio = numEnvio;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+    
     public void AgregarPaquete(Paquete p){
         paquetes.add(p);
     }

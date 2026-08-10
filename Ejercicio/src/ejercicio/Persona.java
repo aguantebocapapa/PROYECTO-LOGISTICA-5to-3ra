@@ -3,18 +3,28 @@ package ejercicio;
 
 import java.util.ArrayList;
 public abstract class Persona {
+    protected int idPersona;
    protected String nombre;
    protected String apellido;
    protected String dni;
    protected String email;
    protected String numero_telefono;
 
-    public Persona(String nombre, String apellido, String dni, String email, String numero_telefono) {
+    public Persona(int idPersona, String nombre, String apellido, String dni, String email, String numero_telefono) {
+        this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.numero_telefono = numero_telefono;
+    }
+
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
     public String getNombre() {
@@ -56,8 +66,9 @@ public abstract class Persona {
     public void setNumero_telefono(String numero_telefono) {
         this.numero_telefono = numero_telefono;
     }
+
+    
     
     public abstract void mostrarPersona();
     
-    public abstract ArrayList<String> DatosExclusivos();
 }
