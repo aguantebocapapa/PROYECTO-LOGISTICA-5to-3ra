@@ -62,118 +62,110 @@ public class Empresa {
     public void agregarAdheridos(Empresas_Adheridas a){
         amiguis.add(a);
     }
-    public Cliente buscarCliente(int id){
-        for(Cliente c:clientes){
-            if(c.getIdCliente()==id){
-                return c;
+    public int buscador_universal(int id,int opcion){
+        int contador=0;
+        switch(opcion){
+            case 1:
+                for(Cliente c:clientes){
+                    if(c.getIdCliente()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 2:
+                for(Empleado e:empleados){
+                    if(e.getIdempleado()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 3:
+                for (Reporte r:reportes){
+                    if(r.getIdReporte()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 4:
+                for(Envio e :envios){
+                    if(e.getNumEnvio()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+            case 5:
+                for(Paquete p:paquetes){
+                    if(p.getId_paquete()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 6:
+                for(Producto pp:productos){
+                    if(pp.getIdproducto()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 7:
+                for(Vehiculo v:vehiculos){
+                    if(v.getIdvehiculo()==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+            case 8:
+                for(Empresas_Adheridas ee:amiguis){
+                    if(ee.id_empresa==id){
+                        return contador;
+                    }
+                    contador++;
+                }
+                break;
+                }
+        return -1;
+        }
+    
+    public void eliminado_universal(int id,int opcion){
+            int indice=buscador_universal(id,opcion);
+            if (indice>-1){
+                switch(opcion){
+                    case 1:
+                        clientes.remove(indice);
+                        break;
+                    case 2:
+                       empleados.remove(indice);
+                       break;
+                    case 3:
+                        reportes.remove(indice);
+                        break;
+                    case 4:
+                        envios.remove(indice);
+                        break;
+                    case 5:
+                        paquetes.remove(indice);
+                        break;
+                    case 6:
+                        productos.remove(indice);
+                        break;
+                    case 7:
+                        vehiculos.remove(indice);
+                        break;
+                    case 8:
+                        amiguis.remove(indice);
+                        break;
+                }
             }
-        }
-        return null;
-    }
-    public Empleado buscarEmpleado(int id){
-        for(Empleado c:empleados){
-            if(c.getIdempleado()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Reporte buscarReporte(int id){
-        for(Reporte c:reportes){
-            if(c.getIdReporte()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Envio buscarEnvio(int id){
-        for(Envio c:envios){
-            if(c.getNumEnvio()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Paquete buscarPaquete(int id){
-        for(Paquete c:paquetes){
-            if(c.getId_paquete()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Producto buscarProducto(int id){
-        for(Producto c:productos){
-            if(c.getIdproducto()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Vehiculo buscarVehiculo(int id){
-        for(Vehiculo c:vehiculos){
-            if(c.getIdvehiculo()==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public Empresas_Adheridas buscarAdheridos(int id){
-        for(Empresas_Adheridas c:amiguis){
-            if(c.id_empresa==id){
-                return c;
-            }
-        }
-        return null;
-    }
-    public void eliminar_Cliente(int id){
-        Cliente c=buscarCliente(id);
-        if(c!=null){
-            clientes.remove(c);
-        }
-    }
-    public void eliminar_Empleado(int id){
-        Empleado c=buscarEmpleado(id);
-        if(c!=null){
-            empleados.remove(c);
-        }
-    }
-    public void eliminar_Reporte(int id){
-        Reporte c=buscarReporte(id);
-        if(c!=null){
-            reportes.remove(c);
-        }
-    }
-    public void eliminar_Envio(int id){
-        Envio c=buscarEnvio(id);
-        if(c!=null){
-            envios.remove(c);
-        }
-    }
-    public void eliminar_Paquete(int id){
-        Paquete c=buscarPaquete(id);
-        if(c!=null){
-            paquetes.remove(c);
-        }
-    }
-    public void eliminar_Producto(int id){
-        Producto c=buscarProducto(id);
-        if(c!=null){
-            productos.remove(c);
-        }
-    }
-    public void eliminar_Vehiculo(int id){
-        Vehiculo c=buscarVehiculo(id);
-        if(c!=null){
-            vehiculos.remove(c);
-        }
-    }
-    public void eliminar_Adhe(int id){
-        Empresas_Adheridas c=buscarAdheridos(id);
-        if(c!=null){
-            amiguis.remove(c);
-        }
-    }
+}
+
+
+
     public void mostrar_empresa(){
         JOptionPane.showMessageDialog(null, "Nombre : " + nombre+" Direccion " + direccion+" Numero de telefono " + num_tele);
         for(Cliente p:clientes){
@@ -201,5 +193,6 @@ public class Empresa {
             s.mostrarEmpreesa();
         }
     }
+
 
 }
