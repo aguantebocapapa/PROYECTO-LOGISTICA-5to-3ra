@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ejercicio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Redes-20
- */
+
 public class Empresa {
     String nombre;
     String direccion;
@@ -193,6 +186,94 @@ public class Empresa {
             s.mostrarEmpreesa();
         }
     }
+    
+    public void editar_universal(int id, int opcion){
+        int indice=buscador_universal(id,opcion);
+        if (indice>-1){
+               switch(opcion){
+                   //EDITOR DE CLIENTES
+                case 1:
+                    Cliente cliente =clientes.get(indice);
+                    if(cliente == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
+                    return;
+                    }
+                    // Editar datos del cliente
+                    String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                    String nuevoApellido = JOptionPane.showInputDialog("Ingrese el nuevo apellido");
+                    String nuevoDni = JOptionPane.showInputDialog("Ingrese el nuevo DNI");
+                    String nuevoEmail = JOptionPane.showInputDialog("Ingrese el nuevo mail");
+                    String nuevoNumero = JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono");
+                    String nuevoHabitual = JOptionPane.showInputDialog("Es cliente habitual?");
+                    int nuevoCantComp = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad de compras"));
+                    double nuevoPresupuesto = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo presupuesto"));
+                    cliente.setNombre(nuevoNombre);
+                    cliente.setApellido(nuevoApellido);
+                    cliente.setDni(nuevoDni);
+                    cliente.setEmail(nuevoEmail); 
+                    cliente.setNumero_telefono(nuevoNumero);
+                    cliente.setHabitual(nuevoHabitual);
+                    cliente.setCantcomp(nuevoCantComp);
+                    cliente.setPresupuesto(nuevoPresupuesto);
+                    //El cliente.set sirve para establecer los nuevos valores agregados (nuevoNombre x ejemplo)
+                    //Dentro del valor original (Nombre). 
+                break;
+                
+                // EDITOR DE EMPLEADOS
+                case 2:
+                    Empleado empleado =empleados.get(indice);
+                    if(empleado == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
+                    return;
+                    }
+                    // Editar datos del EMPLEADO
+                    String nuevoNombre2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                    String nuevoApellido2 = JOptionPane.showInputDialog("Ingrese el nuevo apellido");
+                    String nuevoDni2 = JOptionPane.showInputDialog("Ingrese el nuevo DNI");
+                    String nuevoEmail2 = JOptionPane.showInputDialog("Ingrese el nuevo mail");
+                    String nuevoNumero2 = JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono");
+                    String nuevoSector = JOptionPane.showInputDialog("Ingrese el nuevo sector");
+                    String nuevoCargo = JOptionPane.showInputDialog("Ingrese el nuevo cargo");
+                    String nuevoRol = JOptionPane.showInputDialog("Ingrese el nuevo rol");
+                    empleado.setNombre(nuevoNombre2);
+                    empleado.setApellido(nuevoApellido2);
+                    empleado.setDni(nuevoDni2);
+                    empleado.setEmail(nuevoEmail2); 
+                    empleado.setNumero_telefono(nuevoNumero2);
+                    empleado.setSector(nuevoSector);
+                    empleado.setCargo(nuevoCargo);
+                    empleado.setRol(nuevoRol);
+                    
+                    //EDITOR DE REPORTES
+                case 3:
+                      Reporte reporte = reportes.get(indice);
+                      if(reporte == null){
+                          JOptionPane.showMessageDialog(null, "No se encontro un reporte con ese indice");
+                          return;
+                      }
+                      // EDITAR DATOS DEL REPORTES
+                      String nuevoDetalle = JOptionPane.showInputDialog("Ingrese los nuevos detalles.");
+                      reporte.setDetalle(nuevoDetalle);
+                
+                      //EDITOR DE ENVIO
+                case 4:
+                      Envio envio = envios.get(indice);
+                      if(envio == null){
+                          JOptionPane.showMessageDialog(null, "No se encontro un envio con ese indice.");
+                          return;
+                      }
+                      //EDITAR DATOS DEL ENVIO
+                      String nuevaFecha = JOptionPane.showInputDialog("Ingrese la nueva fecha.");
+                      String nuevoOrigen = JOptionPane.showInputDialog("Ingrese el nuevo origen.");
+                      String nuevoDestino = JOptionPane.showInputDialog("Ingrese los nuevos detalles.");
+                      envio.setDestino(nuevoDestino);
+                      envio.setFecha(nuevaFecha);
+                      envio.setOrigen(nuevoOrigen);
+               }
+                
+               
+                    
+    }}
 
 
 }
