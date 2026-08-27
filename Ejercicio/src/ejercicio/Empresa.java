@@ -196,7 +196,7 @@ public class Empresa {
                     Cliente cliente =clientes.get(indice);
                     if(cliente == null){
                         JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
-                    return;
+                    break;
                     }
                     // Editar datos del cliente
                     String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
@@ -224,7 +224,7 @@ public class Empresa {
                     Empleado empleado =empleados.get(indice);
                     if(empleado == null){
                         JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
-                    return;
+                    break;
                     }
                     // Editar datos del EMPLEADO
                     String nuevoNombre2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
@@ -245,22 +245,24 @@ public class Empresa {
                     empleado.setRol(nuevoRol);
                     
                     //EDITOR DE REPORTES
+                    break;
                 case 3:
                       Reporte reporte = reportes.get(indice);
                       if(reporte == null){
                           JOptionPane.showMessageDialog(null, "No se encontro un reporte con ese indice");
-                          return;
+                          break;
                       }
                       // EDITAR DATOS DEL REPORTES
                       String nuevoDetalle = JOptionPane.showInputDialog("Ingrese los nuevos detalles.");
                       reporte.setDetalle(nuevoDetalle);
                 
                       //EDITOR DE ENVIO
+                      break;
                 case 4:
                       Envio envio = envios.get(indice);
                       if(envio == null){
                           JOptionPane.showMessageDialog(null, "No se encontro un envio con ese indice.");
-                          return;
+                          break;
                       }
                       //EDITAR DATOS DEL ENVIO
                       String nuevaFecha = JOptionPane.showInputDialog("Ingrese la nueva fecha.");
@@ -269,6 +271,85 @@ public class Empresa {
                       envio.setDestino(nuevoDestino);
                       envio.setFecha(nuevaFecha);
                       envio.setOrigen(nuevoOrigen);
+                      
+                      // EDITOR DE PAQUETES
+                      break;
+                case 5:
+                    Paquete paquete = paquetes.get(indice);
+                    if(paquete == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro un paquete con ese indice.");
+                          break;
+                    }
+                    
+                    //EDITAR DATOS DEL PAQUETE
+                    double nuevoPeso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo peso."));
+                    double nuevoVolumen = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo volumen."));
+                    String nuevoFecha_ensamble = JOptionPane.showInputDialog("Ingrese el nuevo peso.");
+                    paquete.setFecha_ensamble(nuevoFecha_ensamble);
+                    paquete.setPeso(nuevoPeso);
+                    paquete.setVolumen(nuevoVolumen);
+                    break;
+                case 6:
+                    Producto producto = productos.get(indice);
+                    if(producto == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro un producto con ese indice.");
+                          break;
+                    }
+                    String nuevoNombreMarca = JOptionPane.showInputDialog("Ingrese el nuevo nombre de marca.");
+                    String nuevoDescripcion = JOptionPane.showInputDialog("Ingrese la nueva descripcion.");
+                    double nuevoPrecio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo precio."));
+                    int nuevoStock = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad de stock"));
+                    String nuevoTipo = JOptionPane.showInputDialog("Ingrese el nuevo tipo.");
+                    producto.setDescripcion(nuevoDescripcion);
+                    producto.setNombremarca(nuevoNombreMarca);
+                    producto.setPrecio(nuevoPrecio);
+                    producto.setStock(nuevoStock);
+                    producto.setTipo(nuevoTipo);
+                    break;
+                    
+                case 7:
+                    Vehiculo vehiculo = vehiculos.get(indice);
+                    if(vehiculo == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro un vehiculo con ese indice.");
+                          break;
+                    }
+                    String nuevoModelo = JOptionPane.showInputDialog("Ingrese el nuevo modelo.");
+                    String nuevaMarca = JOptionPane.showInputDialog("Ingrese la nueva marca.");
+                    int nuevoPrecio2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo precio"));
+                    int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo año"));
+                    String nuevoTipo2 = JOptionPane.showInputDialog("Ingrese el nuevo tipo.");
+                    vehiculo.setAnio(nuevoAnio);
+                    vehiculo.setMarca(nuevaMarca);
+                    vehiculo.setModelo(nuevoModelo);
+                    vehiculo.setPrecio(nuevoPrecio2);
+                    vehiculo.setTipo(nuevoTipo2);
+                    break;
+                    
+                case 8:
+                    Empresas_Adheridas empresa = amiguis.get(indice);
+                    if(empresa == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro un vehiculo con ese indice.");
+                          break;
+                    }
+                    /*String nombre;
+                    String cuil;
+                    String direccion;
+                    String telefono;
+                    String rubro;
+                    String duenio;*/
+                    String nuevoNombre3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre.");
+                    String nuevaCuil = JOptionPane.showInputDialog("Ingrese el nuevo cuil.");
+                    String nuevaDireccion = JOptionPane.showInputDialog("Ingrese la nueva direccion.");
+                    String nuevoTelefono = JOptionPane.showInputDialog("Ingrese el nuevo numero telefonico.");
+                    String nuevoRubro = JOptionPane.showInputDialog("Ingrese el nuevo rubro.");
+                    String nuevoDuenio = JOptionPane.showInputDialog("Ingrese el nuevo dueño.");
+                    empresa.setNombre(nuevoNombre3);
+                    empresa.setCuil(nuevaCuil);
+                    empresa.setDireccion(nuevaDireccion);
+                    empresa.setTelefono(nuevoTelefono);
+                    empresa.setRubro(nuevoRubro);
+                    empresa.setDuenio(nuevoDuenio);
+                    break;
                }
                 
                
