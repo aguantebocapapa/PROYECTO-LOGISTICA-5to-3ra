@@ -11,21 +11,19 @@ public class Ejercicio {
         int contador=0;
         int id_persona = 0;
         while (contador==0){
-            JOptionPane.showMessageDialog(null, "MENU DE OPCIONES:"
-                + "\n 1) Agregar cliente."
+            int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar:"
+            + "\n 1) Agregar cliente."
                 + "\n 2) Agregar empleado."
                 + "\n 3) Agregar reporte."
                 + "\n 4) Agregar envio."
                 + "\n 5) Agregar paquete."
-                + "\n 5) Agregar producto." 
-                + "\n 6) Agregar vehiculo."
-                + "\n 7) Agregar adheridos."
-                + "\n 8) Buscador universal."
-                + "\n 9) Eliminador universal."
-                + "\n 10) Editor universal."
-                + "\n 11) Mostrar empresa."
-                    );
-            int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar:"));
+                + "\n 6) Agregar producto." 
+                + "\n 7) Agregar vehiculo."
+                + "\n 8) Agregar adheridos."
+                + "\n 9) Buscador universal."
+                + "\n 10) Eliminador universal."
+                + "\n 11) Editor universal."
+                + "\n 12) Mostrar empresa."));
             switch(opcion){
                 case 1:
                     int cant_clientes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de clientes que desea ingresar: "));
@@ -149,7 +147,41 @@ public class Ejercicio {
                         + "\n 7) Vehiculos." 
                         + "\n 8) Empresas adheridas.")); 
                     int id_buscar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id que desea buscar: "));
-                    e.buscador_universal(id_buscar, opcion_buscar);
+                    int coco=e.buscador_universal(id_buscar, opcion_buscar);
+                    switch(opcion_buscar){
+                        case 1:
+                            Cliente c=e.clientes.get(coco);
+                            c.mostrarPersona();
+                            break;
+                        case 2:
+                            Empleado  es=e.empleados.get(coco);
+                            es.mostrarPersona();
+                            break;
+                        case 3:
+                            Reporte r=e.reportes.get(coco);
+                            r.mostrar();
+                            break;
+                        case 4:
+                             Envio ess=e.envios.get(coco);
+                             ess.Mostrar_envio();
+                             break;
+                        case  5:
+                            Paquete pp=e.paquetes.get(coco);
+                            pp.MostrarPaquete();
+                            break;
+                        case 6:
+                            Producto ppp=e.productos.get(coco);
+                            ppp.mostrarDatos();
+                            break;
+                        case 7:
+                            Vehiculo v=e.vehiculos.get(coco);
+                            v.mostrar();
+                            break;
+                        case 8:
+                            Empresas_Adheridas emm=e.amiguis.get(coco);
+                            emm.mostrarEmpreesa();
+                            break;
+                    }
                     
                     break;
                 case 10:
@@ -176,7 +208,7 @@ public class Ejercicio {
                         + "\n 7) Vehiculos." 
                         + "\n 8) Empresas adheridas.")); 
                     int id_editar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id que desea editar: "));
-                    e.eliminado_universal(id_editar, opcion_editar);
+                    e.editar_universal(id_editar, opcion_editar);
                     break;
                 case 12:
                     e.mostrar_empresa();
