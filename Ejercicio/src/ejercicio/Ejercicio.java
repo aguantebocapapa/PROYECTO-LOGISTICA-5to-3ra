@@ -63,6 +63,18 @@ public class Ejercicio {
                         int id_rep = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del reporte: "));
                         String detalle = JOptionPane.showInputDialog("ingrese el detalle del reporte: ");
                         Reporte rep = new Reporte (id_rep, detalle);
+                        int cant_ticket=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de tickets a añadir :"));
+                        for(int x=0;<cant_ticket;x++){
+                            int idx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del ticket :"));
+                            String fechas=JOptionPane.showInputDialog("Ingrese la fecha del pago .");
+                            int totalx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el total del pago :"));
+                            String pagos=JOptionPane.showInputDialog("Ingrese el metodo de pago :");
+                            int idxx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del cliente del ticket :"));
+                            int indice=e.buscador_universal(idxx,1);
+                            Cliente c=e.clientes.get(indice);
+                            Ticket t=new Ticket(idx,fechas,c,totalx,pagos);
+                            rep.agregarTicket(t);
+                        }
                         e.agregarReporte(rep);
                     }
                      break;
