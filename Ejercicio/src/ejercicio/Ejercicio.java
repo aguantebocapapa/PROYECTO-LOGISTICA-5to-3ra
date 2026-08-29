@@ -87,6 +87,20 @@ public class Ejercicio {
                         String destino = JOptionPane.showInputDialog("ingrese a donde irá el envío");
                         int id_env= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del envio: "));
                         Envio env = new Envio (id_env, fecha, origen, destino);
+                        int cant_paqs=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de paquetes a añadir :"));
+                        for(int x=0 ;x<cant_paqs;x++){
+                            int id_paqe=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del paquete a agregar :"));
+                            int indoo=e.buscador_universal(id_paqe,5);
+                            Paquete p=e.paquetes.get(indoo);
+                            env.AgregarPaquete(p);
+                        }
+                        int cant_vehs=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de vehiculos :"));
+                        for(int z=0;z<cant_vehs;z++){
+                            int id_vehh=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del vehiculo  :"));
+                            int indu=e.buscador_universal(id_vehh,7);
+                            Vehiculo v=e.vehiculos.get(indu);
+                            env.AgregarVehiculo(v);
+                        }
                         e.agregarEnvio(env);
                     }
                      break;
@@ -98,6 +112,13 @@ public class Ejercicio {
                         String fecha_ensamble = JOptionPane.showInputDialog("ingrese la fecha de ensamblado del paquete: ");
                         int id_paq = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del paquete: "));
                         Paquete paq = new Paquete (id_paq, peso, volumen, fecha_ensamble);
+                        int cant_pro=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de productos a añadir :"));
+                        for(int x=0;x<cant_pro;x++){
+                            int idpro=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del producto :"));
+                            int indx=e.buscador_universal(idpro,6);
+                            Producto p=e.productos.get(indx);
+                            paq.AgregarProducto(p);
+                        }
                         e.agregarPaquete(paq);
                         
                     }
