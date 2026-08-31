@@ -64,7 +64,7 @@ public class Ejercicio {
                         String detalle = JOptionPane.showInputDialog("ingrese el detalle del reporte: ");
                         Reporte rep = new Reporte (id_rep, detalle);
                         int cant_ticket=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de tickets a añadir :"));
-                        for(int x=0;<cant_ticket;x++){
+                        for(int x=0;x <cant_ticket;x++){
                             int idx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del ticket :"));
                             String fechas=JOptionPane.showInputDialog("Ingrese la fecha del pago .");
                             int totalx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el total del pago :"));
