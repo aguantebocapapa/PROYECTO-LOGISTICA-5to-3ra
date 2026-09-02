@@ -6,3 +6,5 @@ Nicolas Rosato
 Xiomara Ureña
 Agustin Zowmir
 Santiago Pedraza
+/n
+Aqui se ubicaran las carpetas de campo del equipo, tanto las individuales como la grupal
