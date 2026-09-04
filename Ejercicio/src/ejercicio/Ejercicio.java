@@ -14,7 +14,8 @@ public class Ejercicio {
         Empresa e = new Empresa (empresa, direccion_emp, telefono_emp);
         int contador=0;
         int id_persona = 0;
-        while (contador==0){
+        boolean salir= false;
+        while (salir==false){
             int opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de la opcion que desea realizar:"
             + "\n 1) Agregar cliente."
                 + "\n 2) Agregar empleado."
@@ -27,14 +28,17 @@ public class Ejercicio {
                 + "\n 9) Buscador universal."
                 + "\n 10) Eliminador universal."
                 + "\n 11) Editor universal."
-                + "\n 12) Mostrar empresa."));
-            switch(opcion){
+                + "\n 12) Mostrar empresa."
+                + "\n 13)Salir."));
+            while(salir==false){
+              switch(opcion){
                 case 1:
                     int cant_clientes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de clientes que desea ingresar: "));
                     for (int i = 0; i < cant_clientes; i++) {
                         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente: ");
                         if(nombre == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                            break;
                         }
                         String apellido = JOptionPane.showInputDialog("Ingrese el apellido del cliente: ");
                         if(apellido == null){
@@ -46,14 +50,20 @@ public class Ejercicio {
                             JOptionPane.showMessageDialog(null, "El numero tiene tener 8 caracteres");
                         }
                         String email = JOptionPane.showInputDialog("Ingrese el email del cliente: ");
+                        if(email == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                        }
                         String telefono = JOptionPane.showInputDialog("Ingrese el numero de telefono del cliente: ");
                         if (telefono.length() < 8 || telefono.length() > 10) {
                             JOptionPane.showMessageDialog(null, "El número tiene que tener entre 8 y 10 caracteres.");
                         break;
                         }
-                        int id_cl = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del cliente(Ejemplo: 1,2,3): "));
+                        int id_cl = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del cliente(Ejemplo: 1,2,3)"));
                         String habitual = JOptionPane.showInputDialog("¿Es cliente habitual? Ingrese si o no: ");
-                        int cant_compras = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de compras del cliente del cliente: "));
+                        if(habitual == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                        }
+                        int cant_compras = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de compras del cliente: "));
                         double presupuesto = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el presupuesto del cliente: "));
                         Cliente c = new Cliente (id_cl, habitual, cant_compras, presupuesto,(id_persona + 1), nombre, apellido, dni, email, telefono);
                         e.agregarCliente(c);
@@ -65,66 +75,72 @@ public class Ejercicio {
                         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente: ");
                         if(nombre == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                            break;
                         }
                         String apellido = JOptionPane.showInputDialog("Ingrese el apellido del cliente: ");
-                        if(nombre == null){
+                        if(apellido == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                             break;
                         }
                         String dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente: ");
                          if(dni.length() < 8 || dni.length() > 8 ){
                             JOptionPane.showMessageDialog(null, "El numero tiene tener 8 caracteres");
-                        }
-                        if(dni == null){
-                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                            break;
                         }
                         String email = JOptionPane.showInputDialog("Ingrese el email del cliente: ");
                         if(email == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
                         }
                         String telefono = JOptionPane.showInputDialog("Ingrese el numero de telefono del cliente: ");
                         if(telefono.length() > 10 || telefono.length() <8){
                             JOptionPane.showMessageDialog(null, "El numero tiene que estar entre 8 y 10 caracteres");
                         }
-                        if(nombre == null){
-                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
-                        }
-                        int id_em =  Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del empleado: "));
-                        if(nombre == null){
-                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
-                        }
+                        int id_em =  Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del empleado(Ejemplo: 1,2,3)"));
                         String sector = JOptionPane.showInputDialog("ingrese el sector en donde trabaja el empleado");
-                        if(nombre == null){
+                        if(sector == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                            break;
                         }
                         String cargo = JOptionPane.showInputDialog("ingrese el cargo");
-                        if(nombre == null){
+                        if(cargo == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                            break;
                         }
                         String rol = JOptionPane.showInputDialog("ingrese el rol del empleado");
-                        if(nombre == null){
+                        if(rol == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
                         }
                         Empleado empl = new Empleado (id_em,sector, cargo, rol,(id_persona + 1), nombre, apellido, dni, email, telefono);
-                        if(nombre == null){
-                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
-                        }
                         e.agregarEmpleado(empl);
                     }
                      break;
                 case 3:
                     int cant_reportes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de reportes que desea ingresar"));
                     for (int i = 0; i < cant_reportes; i++) {
-                        int id_rep = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del reporte:  "));
+                        int id_rep = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del reporte(Ejemplo: 1,2,3):"));
                         String detalle = JOptionPane.showInputDialog("ingrese el detalle del reporte: ");
+                        if(detalle == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                        }
                         Reporte rep = new Reporte (id_rep, detalle);
                         int cant_ticket=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de tickets a añadir :"));
                         for(int x=0;x <cant_ticket;x++){
-                            int idx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del ticket :"));
+                            int idx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del ticket(Ejemplo: 1,2,3):"));
                             String fechas=JOptionPane.showInputDialog("Ingrese la fecha del pago .");
+                            if(fechas == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                            }
                             int totalx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el total del pago :"));
                             String pagos=JOptionPane.showInputDialog("Ingrese el metodo de pago :");
-                            int idxx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del cliente del ticket :"));
+                            if(pagos == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                            }
+                            int idxx=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del cliente del ticket(Ejemplo: 1,2,3):"));
                             int indice=e.buscador_universal(idxx,1);
                             Cliente c=e.clientes.get(indice);
                             Ticket t=new Ticket(idx,fechas,c,totalx,pagos);
@@ -138,20 +154,32 @@ public class Ejercicio {
                     int cant_envios = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de envios que desea ingresar"));
                     for (int i = 0; i < cant_envios; i++) {
                         String fecha = JOptionPane.showInputDialog("ingrese la fecha que se realizó el envio: ");
+                        if(fecha == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String origen =JOptionPane.showInputDialog("ingrese el origen del envío");
+                        if(origen == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String destino = JOptionPane.showInputDialog("ingrese a donde irá el envío");
-                        int id_env= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del envio: "));
+                        if(destino == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
+                        int id_env= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del envio(Ejemplo: 1,2,3): "));
                         Envio env = new Envio (id_env, fecha, origen, destino);
                         int cant_paqs=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de paquetes a añadir :"));
                         for(int x=0 ;x<cant_paqs;x++){
-                            int id_paqe=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del paquete a agregar :"));
+                            int id_paqe=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del paquete a agregar(Ejemplo: 1,2,3):"));
                             int indoo=e.buscador_universal(id_paqe,5);
                             Paquete p=e.paquetes.get(indoo);
                             env.AgregarPaquete(p);
                         }
                         int cant_vehs=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de vehiculos :"));
                         for(int z=0;z<cant_vehs;z++){
-                            int id_vehh=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del vehiculo  :"));
+                            int id_vehh=Integer.parseInt(JOptionPane.showInputDialog("Ingrese  el id del vehiculo(Ejemplo: 1,2,3):"));
                             int indu=e.buscador_universal(id_vehh,7);
                             Vehiculo v=e.vehiculos.get(indu);
                             env.AgregarVehiculo(v);
@@ -165,28 +193,43 @@ public class Ejercicio {
                         double peso = Double.parseDouble(JOptionPane.showInputDialog("ingrese el peso del paquete (en kg): "));
                         double volumen = Double.parseDouble(JOptionPane.showInputDialog("ingrese el volumen del paquete: "));
                         String fecha_ensamble = JOptionPane.showInputDialog("ingrese la fecha de ensamblado del paquete: ");
-                        int id_paq = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del paquete: "));
+                        if(fecha_ensamble == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
+                        int id_paq = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del paquete:(Ejemplo: 1,2,3) "));
                         Paquete paq = new Paquete (id_paq, peso, volumen, fecha_ensamble);
                         int cant_pro=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de productos a añadir :"));
                         for(int x=0;x<cant_pro;x++){
-                            int idpro=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del producto :"));
+                            int idpro=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id del producto(Ejemplo: 1,2,3)"));
                             int indx=e.buscador_universal(idpro,6);
                             Producto p=e.productos.get(indx);
                             paq.AgregarProducto(p);
                         }
                         e.agregarPaquete(paq);
-                        
                     }
                     break;
                 case 6:
                     int cant_productos = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de productos que desea ingresar: "));
                     for (int i = 0; i < cant_productos; i++) {
                         String Nombremarca = JOptionPane.showInputDialog("ingrese el nombre de la marca del producto: ");
+                        if(Nombremarca == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String Descripcion = JOptionPane.showInputDialog("ingrese la descripcion del producto: ");
+                       if(Descripcion == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         double precio = Double.parseDouble(JOptionPane.showInputDialog("ingrese el precio del producto: "));
                         int stock = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de stock del producto ")); 
                         String  tipo = JOptionPane.showInputDialog("ingrese que tipo de producto es : ");
-                        int id_pro = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del producto: "));
+                        if(tipo == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
+                        int id_pro = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del producto:(Ejemplo: 1,2,3) "));
                         Producto pro = new Producto (id_pro, Nombremarca, Descripcion, precio, stock, tipo );
                         e.agregarProducto(pro);
                     }
@@ -195,11 +238,23 @@ public class Ejercicio {
                     int cant_vehiculos = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de vehiculos que desea ingresar: "));
                     for (int i = 0; i < cant_vehiculos; i++) {
                         String modelo = JOptionPane.showInputDialog("ingrese el modelo del vehiculo: ");
+                        if(modelo == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String marca = JOptionPane.showInputDialog("ingrese la marca del vehiculo: ");
+                        if(marca == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         int precio = Integer.parseInt(JOptionPane.showInputDialog("ingrese el precio del vehiculo: "));
                         int anio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año del vehiculo: ")); 
                         String  tipo = JOptionPane.showInputDialog("ingrese que tipo de vehiculo es : ");
-                        int id_veh = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del vehiculo: "));
+                         if(tipo == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
+                        int id_veh = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador del vehiculo(Ejemplo: 1,2,3): "));
                         Vehiculo veh = new Vehiculo (id_veh, modelo, marca, precio, anio, tipo );
                         e.agregarVehiculo(veh);
                     }
@@ -208,12 +263,36 @@ public class Ejercicio {
                     int cant_adheridos = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de empresas adheridas que desea ingresar: "));
                     for (int i = 0; i < cant_adheridos; i++) {
                         String Nombre   = JOptionPane.showInputDialog("ingrese el nombre de la empresa adherida: ");
+                        if(Nombre == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String cuil     = JOptionPane.showInputDialog("ingrese el cuil de la empresa adherida : ");
+                        if(cuil == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String direccion  = JOptionPane.showInputDialog("ingrese la direccion de la empresa adherida: ");
+                        if(direccion == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String telefono  = JOptionPane.showInputDialog("ingrese el telefono de la empresa adherida: ");
+                        if(telefono == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String rubro  = JOptionPane.showInputDialog("ingrese el rubro de la empresa adherida: ");
+                        if(rubro == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
                         String duenio  = JOptionPane.showInputDialog("ingrese el dueño de la empresa adherida: ");
-                        int id_ad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador de la empresa adherida: "));
+                        if(duenio == null){
+                            JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
+                             break;
+                          }
+                        int id_ad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el identificador de la empresa adherida:(Ejemplo: 1,2,3)"));
                         Empresas_Adheridas ad = new Empresas_Adheridas (id_ad, Nombre, cuil, direccion, telefono, rubro, duenio);
                         e.agregarAdheridos(ad);
                     }
@@ -234,7 +313,7 @@ public class Ejercicio {
                         + "\n 6) Productos." 
                         + "\n 7) Vehiculos." 
                         + "\n 8) Empresas adheridas.")); 
-                    int id_buscar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id que desea buscar: "));
+                    int id_buscar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id que desea buscar(Ejemplo: 1,2,3): "));
                     int coco=e.buscador_universal(id_buscar, opcion_buscar);
                     switch(opcion_buscar){
                         case 1:
@@ -301,10 +380,14 @@ public class Ejercicio {
                 case 12:
                     e.mostrar_empresa();
                     break;
+                case 13:
+                    salir=true;
+                    JOptionPane.showMessageDialog(null,"Salio del programa");
+                    break;
+              
+              }
             }   
                  
-            
-        
     }
     
     }
