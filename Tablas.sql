@@ -133,3 +133,7 @@ ciudad int unsigned,
 nombre varchar(50),
 foreign key (ciudad) references Ciudades (ID_Ciudad)
 );
+alter table vehiculos
+add column Modelo Varchar(100);
+alter table vehiculos
+add column Marca Varchar(100);
