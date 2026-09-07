@@ -1,9 +1,8 @@
 package ejercicio;
-
 import javax.swing.JOptionPane;
-
 public class Ejercicio {
     public static void main(String[] args) {
+        
         String empresa = JOptionPane.showInputDialog("Ingrese el nombre de la empresa: ");
         String direccion_emp = JOptionPane.showInputDialog("Ingrese la direccion de la empresa: ");
         String telefono_emp = JOptionPane.showInputDialog("Ingrese el numero de telefono de la empresa: ");
@@ -12,7 +11,6 @@ public class Ejercicio {
             return;
         }
         Empresa e = new Empresa (empresa, direccion_emp, telefono_emp);
-        int contador=0;
         int id_persona = 0;
         boolean salir= false;
         while (salir==false){
@@ -30,7 +28,6 @@ public class Ejercicio {
                 + "\n 11) Editor universal."
                 + "\n 12) Mostrar empresa."
                 + "\n 13)Salir."));
-            while(salir==false){
               switch(opcion){
                 case 1:
                     int cant_clientes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de clientes que desea ingresar: "));
@@ -72,27 +69,27 @@ public class Ejercicio {
                 case 2:             
                     int cant_empleados = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de empleados que desea ingresar"));
                     for (int i = 0; i < cant_empleados; i++) {
-                        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente: ");
+                        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del empleado: ");
                         if(nombre == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                             break;
                         }
-                        String apellido = JOptionPane.showInputDialog("Ingrese el apellido del cliente: ");
+                        String apellido = JOptionPane.showInputDialog("Ingrese el apellido del empleado: ");
                         if(apellido == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                             break;
                         }
-                        String dni = JOptionPane.showInputDialog("Ingrese el DNI del cliente: ");
+                        String dni = JOptionPane.showInputDialog("Ingrese el DNI del empleado: ");
                          if(dni.length() < 8 || dni.length() > 8 ){
                             JOptionPane.showMessageDialog(null, "El numero tiene tener 8 caracteres");
                             break;
                         }
-                        String email = JOptionPane.showInputDialog("Ingrese el email del cliente: ");
+                        String email = JOptionPane.showInputDialog("Ingrese el email del empleado: ");
                         if(email == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
                         }
-                        String telefono = JOptionPane.showInputDialog("Ingrese el numero de telefono del cliente: ");
+                        String telefono = JOptionPane.showInputDialog("Ingrese el numero de telefono del empleado: ");
                         if(telefono.length() > 10 || telefono.length() <8){
                             JOptionPane.showMessageDialog(null, "El numero tiene que estar entre 8 y 10 caracteres");
                         }
@@ -114,6 +111,7 @@ public class Ejercicio {
                         }
                         Empleado empl = new Empleado (id_em,sector, cargo, rol,(id_persona + 1), nombre, apellido, dni, email, telefono);
                         e.agregarEmpleado(empl);
+
                     }
                      break;
                 case 3:
@@ -147,8 +145,9 @@ public class Ejercicio {
                             rep.agregarTicket(t);
                         }
                         e.agregarReporte(rep);
+                         break;
                     }
-                     break;
+                    
                 
                 case 4:
                     int cant_envios = Integer.parseInt(JOptionPane.showInputDialog("ingrese la cantidad de envios que desea ingresar"));
@@ -158,7 +157,7 @@ public class Ejercicio {
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
                           }
-                        String origen =JOptionPane.showInputDialog("ingrese el origen del envío");
+                        String origen =JOptionPane.showInputDialog("ingrese el origen del envío"+ "\n - Regional"+"\n - Nacional"+"\n - Internacional");
                         if(origen == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
@@ -384,11 +383,16 @@ public class Ejercicio {
                     salir=true;
                     JOptionPane.showMessageDialog(null,"Salio del programa");
                     break;
-              
+                default:
+                    JOptionPane.showMessageDialog(null,"ERROR, Ingrese una opción valida!");
+                    break;
               }
+              
+           
+              
             }   
                  
     }
-    
-    }
 }
+
+
