@@ -157,12 +157,587 @@ public class Ejercicio {
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
                           }
-                        String origen =JOptionPane.showInputDialog("ingrese el origen del envío"+ "\n - Regional"+"\n - Nacional"+"\n - Internacional");
+                        String [] provincias ={"Buenos Aires","Catamarca","Chaco","Chubut","Cordoba","Corrientes",
+                                "Entre Rios","Formosa","Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquen",
+                                "Rio Negro","Salta","San Juan","San Luis","Santa Cruz","Santa Fe",
+                                "Santiago del Estero","Tierra del Fuego","Tucuman"};
+                        String[]buenos_aires={"Ciudad Autonoma","La plata","Mar del plata","Bahia Blanca"};
+                        String[]Catamarca={"San Fernando del Valle de Catamarca","Andalgala"};
+                        String[]Chaco={"Resistencia","Charata"};
+                        String[]Chubut={"Comodoro Rivadavia","Puerto Madryn"};
+                        String[]Cordoba={"Cordoba","Villa Maria"};
+                        String[]Corrientes={"Corrientes","Goya"};
+                        String[]Entre_rios={"Parana","Concordia"};
+                        String[]Formosa={"Formosa","Clorinda"};
+                        String[]Jujuy={"San Salvador de Jujuy","Libertador General San Martin"};
+                        String[]la_pampa={"Santa Rosa","General Pico"};
+                        String[]la_rioja={"La Rioja","Chilecito"};
+                        String[]Mendoza={"Mendoza","Godoy Cruz"};
+                        String[]Misiones={"Posadas","Obera"};
+                        String[]Neuquen={"Neuquen","Cutral Co"};
+                        String[]Rio_negro={"Viedma","San Carlos de Bariloche"};
+                        String[]Salta={"Salta","Cafayate"};
+                        String[]San_juan={"San Juan","Rawson"};
+                        String[]San_luis={"San Luis","Villa Mercedes"};
+                        String[]Santa_cruz={"Rio Gallegos","El Calafate"};
+                        String[]Santa_fe={"Santa Fe de la Vera Cruz","Rosario"};
+                        String[]Santiago_del_estero={"Santiago Del Estero","La Banda"};
+                        String[]Tierra_del_fuego={"Ushuaia","Rio Grande"};
+                        String[]Tucuman={"San Miguel de Tucuman","Tafi Viejo"};
+                        String origenes =JOptionPane.showInputDialog("ingrese el origen del envío"+"\n - Nacional"+"\n - Internacional");
+                            
+                        String origen =null;
+                        if (origenes.equalsIgnoreCase("Nacional")){
+                            
+                            
+                        String seleccion = (String) JOptionPane.showInputDialog(
+                                null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                provincias,                       // Array de opciones
+                                provincias[0]                     // Valor por defecto seleccionado
+                                );
+                            switch(seleccion){
+                                case "Buenos Aires":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                buenos_aires,                       // Array de opciones
+                                buenos_aires[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Catamarca":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Catamarca,                       // Array de opciones
+                                Catamarca[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Chaco":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Chaco,                       // Array de opciones
+                                Chaco[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Chubut":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Chubut,                       // Array de opciones
+                                Chubut[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Cordoba":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Cordoba,                       // Array de opciones
+                                Cordoba[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Corrientes":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Corrientes,                       // Array de opciones
+                                Corrientes[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Entre Rios":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Entre_rios,                       // Array de opciones
+                                Entre_rios[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Formosa":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Formosa,                       // Array de opciones
+                                Formosa[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Jujuy":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Jujuy,                       // Array de opciones
+                                Jujuy[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "La Pampa":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                la_pampa,                       // Array de opciones
+                                la_pampa[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "La Rioja":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                la_rioja,                       // Array de opciones
+                                la_rioja[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Mendoza":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Mendoza,                       // Array de opciones
+                                Mendoza[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Misiones":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Misiones,                       // Array de opciones
+                                Misiones[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Neuquen":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Neuquen,                       // Array de opciones
+                                Neuquen[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Rio Negro":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Rio_negro,                       // Array de opciones
+                                Rio_negro[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Salta":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Salta,                       // Array de opciones
+                                Salta[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "San Juan":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                San_juan,                       // Array de opciones
+                                San_juan[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "San Luis":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                San_luis,                       // Array de opciones
+                                San_luis[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santa Cruz":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santa_cruz,                       // Array de opciones
+                                Santa_cruz[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santa Fe":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santa_fe,                       // Array de opciones
+                                Santa_fe[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santiago del Estero":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santiago_del_estero,                       // Array de opciones
+                                Santiago_del_estero[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Tierra del Fuego":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Tierra_del_fuego,                       // Array de opciones
+                                Tierra_del_fuego[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Tucuman":
+                                    origen=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Tucuman,                       // Array de opciones
+                                Tucuman[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                default :
+                                    break;
+                            }
+                        }else{
+                            origen=JOptionPane.showInputDialog("Ingrese el pais y despues el nombre de la ciudad");
+                        }
                         if(origen == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
                           }
-                        String destino = JOptionPane.showInputDialog("ingrese a donde irá el envío");
+                        String destinos =JOptionPane.showInputDialog("ingrese el destino del envío"+"\n - Nacional"+"\n - Internacional");
+                            
+                        String destino =null;
+                        if (destinos.equalsIgnoreCase("Nacional")){
+                            
+                            
+                        String seleccion = (String) JOptionPane.showInputDialog(
+                                null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                provincias,                       // Array de opciones
+                                provincias[0]                     // Valor por defecto seleccionado
+                                );
+                            switch(seleccion){
+                                case "Buenos Aires":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                buenos_aires,                       // Array de opciones
+                                buenos_aires[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Catamarca":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Catamarca,                       // Array de opciones
+                                Catamarca[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Chaco":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Chaco,                       // Array de opciones
+                                Chaco[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Chubut":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Chubut,                       // Array de opciones
+                                Chubut[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Cordoba":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Cordoba,                       // Array de opciones
+                                Cordoba[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Corrientes":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Corrientes,                       // Array de opciones
+                                Corrientes[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Entre Rios":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Entre_rios,                       // Array de opciones
+                                Entre_rios[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Formosa":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Formosa,                       // Array de opciones
+                                Formosa[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Jujuy":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Jujuy,                       // Array de opciones
+                                Jujuy[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "La Pampa":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                la_pampa,                       // Array de opciones
+                                la_pampa[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "La Rioja":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                la_rioja,                       // Array de opciones
+                                la_rioja[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Mendoza":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Mendoza,                       // Array de opciones
+                                Mendoza[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Misiones":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Misiones,                       // Array de opciones
+                                Misiones[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Neuquen":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Neuquen,                       // Array de opciones
+                                Neuquen[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Rio Negro":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Rio_negro,                       // Array de opciones
+                                Rio_negro[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Salta":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Salta,                       // Array de opciones
+                                Salta[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "San Juan":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                San_juan,                       // Array de opciones
+                                San_juan[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "San Luis":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                San_luis,                       // Array de opciones
+                                San_luis[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santa Cruz":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santa_cruz,                       // Array de opciones
+                                Santa_cruz[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santa Fe":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santa_fe,                       // Array de opciones
+                                Santa_fe[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Santiago del Estero":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Santiago_del_estero,                       // Array de opciones
+                                Santiago_del_estero[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Tierra del Fuego":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Tierra_del_fuego,                       // Array de opciones
+                                Tierra_del_fuego[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                case "Tucuman":
+                                    destino=(String) JOptionPane.showInputDialog(
+                                    null,                           // Componente padre, null para centrar
+                                "Selecciona una opción:",       // Mensaje a mostrar
+                                "Menú Desplegable",             // Título de la ventana
+                                JOptionPane.QUESTION_MESSAGE,   // Tipo de mensaje
+                                null,                           // Icono personalizado (null para default)
+                                Tucuman,                       // Array de opciones
+                                Tucuman[0]                     // Valor por defecto seleccionado
+                                );
+                                    break;
+                                default :
+                                    break;
+                            }
+                        }else{
+                            origen=JOptionPane.showInputDialog("Ingrese el pais y despues el nombre de la ciudad");
+                        }
                         if(destino == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
                              break;
