@@ -736,7 +736,7 @@ public class Ejercicio {
                                     break;
                             }
                         }else{
-                            origen=JOptionPane.showInputDialog("Ingrese el pais y despues el nombre de la ciudad");
+                            destino=JOptionPane.showInputDialog("Ingrese el pais y despues el nombre de la ciudad");
                         }
                         if(destino == null){
                             JOptionPane.showMessageDialog(null, "El campo no puede estar vacio.");
