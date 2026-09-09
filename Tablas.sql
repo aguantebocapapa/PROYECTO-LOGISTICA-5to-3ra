@@ -32,6 +32,7 @@ create table Productos_Paquetes(
 ID_Propa int unsigned auto_increment primary key,
 ID_Producto int unsigned,
 ID_Paquete int unsigned,
+cantidad int,
 foreign key (ID_Producto) references Productos(ID_Producto),
 foreign key (ID_Paquete) references Paquetes(ID_Paquete)
 );
