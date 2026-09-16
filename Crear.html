@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+   
+</head>
+<body>
+    
+    <h1>Crear cuenta de cliente : </h1>
+    <input type="text" placeholder="Nombre">
+    <input type="text" placeholder="Apellido"> 
+    <input id="Contra" type="text" placeholder="DNI"> 
+    <input type="text" placeholder="Direccion"> 
+    <input type="text" placeholder="telefono"> 
+    <input id="Usuario" type="text" placeholder="email">
+    <input type="text" placeholder="Codigo postal">  
+    <button onclick="agregar_cuenta()"> Crear Cuenta</button>
+    <script>
+        var listaa=JSON.parse(localStorage.getItem("lista"));
+        function agregar_cuenta (){
+            let ids=document.getElementById("Usuario").value;
+            let contras=document.getElementById("Contra").value;
+            let auxiliar = {
+            Nombre: ids,
+            Contrasenia: contras
+            };
+            listaa.push(auxiliar);
+            window.open('Inicio_sesion.html', '_self');
+            localStorage.setItem("lista", JSON.stringify(listaa));
+        }
+
+    </script>        
+</body>
