@@ -5,17 +5,23 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaCliente extends javax.swing.JFrame {
-
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaCliente
      */
-    public VentanaCliente() {
+    public VentanaCliente(Empresa gestion,int contador) {
         initComponents();
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -88,14 +94,39 @@ public class VentanaCliente extends javax.swing.JFrame {
         jLabel9.setText("Presupuesto");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
 
@@ -215,39 +246,183 @@ public class VentanaCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String dni = txtDni.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String Email = txtEmail.getText();
+        String telefono = txtTelefono.getText();
+        String id_cliente=txtCliente.getText();
+        String habi=txtHabitual.getText();
+        String comp=txtCompras.getText();
+        String pesu=txtPresupuesto.getText();
+        if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(Email) || "".equals(telefono)||"".equals(id_cliente)||"".equals(comp)||"".equals(habi)||"".equals(pesu) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        
+        if(dni.length()!=8){
+            JOptionPane.showMessageDialog(null, "ERROR - El dni debe tener solo 8 digitos");
+            contador++;
+            return;
+        }
+       if(telefono.length()!=11){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 11 digitos");
+            contador++;
+            return;
+        }
+        if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo nombre solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo apellido, solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        int num=Integer.parseInt(comp);
+        int num2=Integer.parseInt(id_cliente);
+        double num3;
+        num3 = Double.parseDouble(pesu);
+       
+        if(!Email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
+            JOptionPane.showMessageDialog(null, "ERROR - Ingrese un correo electronico valido");
+            contador++;
+            return;
+        }
+       
+       
+        Cliente nueva_persona = new Cliente(num2,habi, num,  num3, nombre,apellido,dni,Email,telefono);
+           
+        gestion.agregarCliente(nueva_persona);
+       
+        JOptionPane.showMessageDialog(null, "Cliente registrada exitosamente !");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDni.setText("");
+        txtEmail.setText("");
+        txtTelefono.setText("");
+        txtCliente.setText("");
+        txtHabitual.setText("");
+        txtCompras.setText("");
+        txtPresupuesto.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtCliente.getText();
+        int num=Integer.parseInt(id);
+        Cliente p=gestion.clientes.get(gestion.buscador_universal(num,1));
+        if(p!=null){
+            mostrar_cliente(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtCliente.getText());
+        gestion.eliminado_universal(id,1);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String dni = txtDni.getText();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String Email = txtEmail.getText();
+        String telefono = txtTelefono.getText();
+        String id_cliente=txtCliente.getText();
+        String habi=txtHabitual.getText();
+        String comp=txtCompras.getText();
+        String pesu=txtPresupuesto.getText();
+        if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(Email) || "".equals(telefono)||"".equals(id_cliente)||"".equals(comp)||"".equals(habi)||"".equals(pesu) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        
+        if(dni.length()!=8){
+            JOptionPane.showMessageDialog(null, "ERROR - El dni debe tener solo 8 digitos");
+            contador++;
+            return;
+        }
+       if(telefono.length()!=11){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 11 digitos");
+            contador++;
+            return;
+        }
+        if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo nombre solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo apellido, solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        int num=Integer.parseInt(comp);
+        int num2=Integer.parseInt(id_cliente);
+        double num3;
+        num3 = Double.parseDouble(pesu);
+       
+        if(!Email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
+            JOptionPane.showMessageDialog(null, "ERROR - Ingrese un correo electronico valido");
+            contador++;
+            return;
+        }
+        gestion.editar_cliente(num2, nombre, apellido, dni, Email, telefono, habi, num, num3);
+        actualizarTabla();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaCliente().setVisible(true);
-            }
-        });
+     private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaClientes.getModel();
+        modelo.setRowCount(0);
+        for(Cliente p:gestion.clientes){
+            Object[] fila={
+                p.getIdCliente(),
+                p.getNombre(),
+                p.getApellido(),
+                p.getDni(),
+                p.getEmail(),
+                p.getNumero_telefono(),
+                p.getHabitual(),
+                p.getCantcomp(),
+                p.getPresupuesto()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrar_cliente(Cliente p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaClientes.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getIdCliente(),
+                p.getNombre(),
+                p.getApellido(),
+                p.getDni(),
+                p.getEmail(),
+                p.getNumero_telefono(),
+                p.getHabitual(),
+                p.getCantcomp(),
+                p.getPresupuesto()
+            };
+            modelo.addRow(fila);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
