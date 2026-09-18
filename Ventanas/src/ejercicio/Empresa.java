@@ -17,6 +17,7 @@ public class Empresa {
     ArrayList<Producto> productos;
     ArrayList<Vehiculo> vehiculos;
     ArrayList<Empresas_Adheridas> amiguis;
+    ArrayList<Ticket> tickets;
 
     public Empresa(String nombre, String direccion, String num_tele) {
         this.nombre = nombre;
@@ -30,6 +31,7 @@ public class Empresa {
         productos=new ArrayList<>();
         vehiculos=new ArrayList<>();
         amiguis=new ArrayList<>();
+        tickets=new ArrayList<>();
     }
     public void agregarCliente(Cliente c){
         clientes.add(c);
@@ -54,6 +56,9 @@ public class Empresa {
     }
     public void agregarAdheridos(Empresas_Adheridas a){
         amiguis.add(a);
+    }
+    public void agregar_tickets(Ticket a){
+        tickets.add(a);
     }
     public int buscador_universal(int id,int opcion){
         int contador=0;
@@ -121,7 +126,16 @@ public class Empresa {
                     contador++;
                 }
                 break;
+                
+            case 9:
+            for(Ticket ee:tickets){
+                    if(ee.getIdticket()==id){
+                        return contador;
+                    }
+                    contador++;
                 }
+                break;
+        }
         return -1;
         }
     
@@ -153,59 +167,37 @@ public class Empresa {
                     case 8:
                         amiguis.remove(indice);
                         break;
+                    case 9:
+                        tickets.remove(indice);
+                        break;
                 }
             }
 }
-    
-    public void editar_universal(int id, int opcion){
-        int indice=buscador_universal(id,opcion);
-        if (indice>-1){
-               switch(opcion){
-                   //EDITOR DE CLIENTES
-                case 1:
-                    Cliente cliente =clientes.get(indice);
-                    if(cliente == null){
-                        JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
-                    break;
-                    }
-                    // Editar datos del cliente
-                    String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
-                    String nuevoApellido = JOptionPane.showInputDialog("Ingrese el nuevo apellido");
-                    String nuevoDni = JOptionPane.showInputDialog("Ingrese el nuevo DNI");
-                    String nuevoEmail = JOptionPane.showInputDialog("Ingrese el nuevo mail");
-                    String nuevoNumero = JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono");
-                    String nuevoHabitual = JOptionPane.showInputDialog("Es cliente habitual?");
-                    int nuevoCantComp = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad de compras"));
-                    double nuevoPresupuesto = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo presupuesto"));
-                    cliente.setNombre(nuevoNombre);
-                    cliente.setApellido(nuevoApellido);
-                    cliente.setDni(nuevoDni);
-                    cliente.setEmail(nuevoEmail); 
-                    cliente.setNumero_telefono(nuevoNumero);
-                    cliente.setHabitual(nuevoHabitual);
-                    cliente.setCantcomp(nuevoCantComp);
-                    cliente.setPresupuesto(nuevoPresupuesto);
-                    //El cliente.set sirve para establecer los nuevos valores agregados (nuevoNombre x ejemplo)
-                    //Dentro del valor original (Nombre). 
-                break;
+    public void editar_cliente(int id,String nuevoNombre, String nuevoApellido,String nuevoDni,String nuevoEmail,String nuevoNumero,String nuevoHabitual,int nuevoCantComp,double nuevoPresupuesto ){
+        int indice=buscador_universal(id,1);
+        Cliente cliente =clientes.get(indice);
+        if(cliente == null){
+            JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
+            return;
+            }
+        cliente.setNombre(nuevoNombre);
+        cliente.setApellido(nuevoApellido);
+        cliente.setDni(nuevoDni);
+        cliente.setEmail(nuevoEmail); 
+        cliente.setNumero_telefono(nuevoNumero);
+        cliente.setHabitual(nuevoHabitual);
+        cliente.setCantcomp(nuevoCantComp);
+        cliente.setPresupuesto(nuevoPresupuesto);
                 
-                // EDITOR DE EMPLEADOS
-                case 2:
-                    Empleado empleado =empleados.get(indice);
+    }
+    public void editar_empleado(int id,String nuevoNombre2,String nuevoApellido2 ,String nuevoDni2,String nuevoEmail2,String nuevoNumero2,String nuevoSector,String nuevoCargo,String nuevoRol){
+        int indice=buscador_universal(id,2);
+        Empleado empleado =empleados.get(indice);
                     if(empleado == null){
                         JOptionPane.showMessageDialog(null, "No se encontro una persona con ese indice");
-                    break;
+                    return;
                     }
-                    // Editar datos del EMPLEADO
-                    String nuevoNombre2 = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
-                    String nuevoApellido2 = JOptionPane.showInputDialog("Ingrese el nuevo apellido");
-                    String nuevoDni2 = JOptionPane.showInputDialog("Ingrese el nuevo DNI");
-                    String nuevoEmail2 = JOptionPane.showInputDialog("Ingrese el nuevo mail");
-                    String nuevoNumero2 = JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono");
-                    String nuevoSector = JOptionPane.showInputDialog("Ingrese el nuevo sector");
-                    String nuevoCargo = JOptionPane.showInputDialog("Ingrese el nuevo cargo");
-                    String nuevoRol = JOptionPane.showInputDialog("Ingrese el nuevo rol");
-                    empleado.setNombre(nuevoNombre2);
+        empleado.setNombre(nuevoNombre2);
                     empleado.setApellido(nuevoApellido2);
                     empleado.setDni(nuevoDni2);
                     empleado.setEmail(nuevoEmail2); 
@@ -213,118 +205,96 @@ public class Empresa {
                     empleado.setSector(nuevoSector);
                     empleado.setCargo(nuevoCargo);
                     empleado.setRol(nuevoRol);
-                    
-                    //EDITOR DE REPORTES
-                    break;
-                case 3:
-                      Reporte reporte = reportes.get(indice);
+    }
+    public void editar_reporte(int id, String nuevoDetalle){
+        int indice=buscador_universal(id,3);
+        Reporte reporte = reportes.get(indice);
                       if(reporte == null){
                           JOptionPane.showMessageDialog(null, "No se encontro un reporte con ese indice");
-                          break;
+                          return;
                       }
-                      // EDITAR DATOS DEL REPORTES
-                      String nuevoDetalle = JOptionPane.showInputDialog("Ingrese los nuevos detalles.");
-                      reporte.setDetalle(nuevoDetalle);
-                
-                      //EDITOR DE ENVIO
-                      break;
-                case 4:
-                      Envio envio = envios.get(indice);
+        reporte.setDetalle(nuevoDetalle);
+    }
+    public void editar_envio(int id, String nuevaFecha, String nuevoOrigen, String nuevoDestino){
+       int indice=buscador_universal(id,4);
+        Envio envio = envios.get(indice);
                       if(envio == null){
                           JOptionPane.showMessageDialog(null, "No se encontro un envio con ese indice.");
-                          break;
-                      }
-                      //EDITAR DATOS DEL ENVIO
-                      String nuevaFecha = JOptionPane.showInputDialog("Ingrese la nueva fecha.");
-                      String nuevoOrigen = JOptionPane.showInputDialog("Ingrese el nuevo origen.");
-                      String nuevoDestino = JOptionPane.showInputDialog("Ingrese los nuevos detalles.");
-                      envio.setDestino(nuevoDestino);
+                          return;
+                      } 
+        envio.setDestino(nuevoDestino);
                       envio.setFecha(nuevaFecha);
                       envio.setOrigen(nuevoOrigen);
-                      
-                      // EDITOR DE PAQUETES
-                      break;
-                case 5:
-                    Paquete paquete = paquetes.get(indice);
+    }
+    public void editar_paquete(int id,double nuevoPeso,double nuevoVolumen,String nuevoFecha_ensamble ){
+        int indice=buscador_universal(id,5);
+        Paquete paquete = paquetes.get(indice);
                     if(paquete == null){
                         JOptionPane.showMessageDialog(null, "No se encontro un paquete con ese indice.");
-                          break;
+                          return;
                     }
-                    
-                    //EDITAR DATOS DEL PAQUETE
-                    double nuevoPeso = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo peso."));
-                    double nuevoVolumen = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo volumen."));
-                    String nuevoFecha_ensamble = JOptionPane.showInputDialog("Ingrese el nuevo peso.");
-                    paquete.setFecha_ensamble(nuevoFecha_ensamble);
+        paquete.setFecha_ensamble(nuevoFecha_ensamble);
                     paquete.setPeso(nuevoPeso);
                     paquete.setVolumen(nuevoVolumen);
-                    break;
-                case 6:
-                    Producto producto = productos.get(indice);
+        
+    }
+    public void editar_producto(int id,String nuevoNombreMarca,String nuevoDescripcion,double nuevoPrecio,int nuevoStock,String nuevoTipo){
+        int indice=buscador_universal(id,6);
+        Producto producto = productos.get(indice);
                     if(producto == null){
                         JOptionPane.showMessageDialog(null, "No se encontro un producto con ese indice.");
-                          break;
+                          return;
                     }
-                    String nuevoNombreMarca = JOptionPane.showInputDialog("Ingrese el nuevo nombre de marca.");
-                    String nuevoDescripcion = JOptionPane.showInputDialog("Ingrese la nueva descripcion.");
-                    double nuevoPrecio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el nuevo precio."));
-                    int nuevoStock = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad de stock"));
-                    String nuevoTipo = JOptionPane.showInputDialog("Ingrese el nuevo tipo.");
-                    producto.setDescripcion(nuevoDescripcion);
+        producto.setDescripcion(nuevoDescripcion);
                     producto.setNombremarca(nuevoNombreMarca);
                     producto.setPrecio(nuevoPrecio);
                     producto.setStock(nuevoStock);
                     producto.setTipo(nuevoTipo);
-                    break;
-                    
-                case 7:
-                    Vehiculo vehiculo = vehiculos.get(indice);
+    }
+    public void editar_vehiculo(int id,String nuevoModelo,String nuevaMarca,int nuevoPrecio2,int nuevoAnio,String nuevoTipo2){
+        int indice=buscador_universal(id,7);
+        Vehiculo vehiculo = vehiculos.get(indice);
                     if(vehiculo == null){
                         JOptionPane.showMessageDialog(null, "No se encontro un vehiculo con ese indice.");
-                          break;
+                          return;
                     }
-                    String nuevoModelo = JOptionPane.showInputDialog("Ingrese el nuevo modelo.");
-                    String nuevaMarca = JOptionPane.showInputDialog("Ingrese la nueva marca.");
-                    int nuevoPrecio2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo precio"));
-                    int nuevoAnio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo año"));
-                    String nuevoTipo2 = JOptionPane.showInputDialog("Ingrese el nuevo tipo.");
-                    vehiculo.setAnio(nuevoAnio);
+        vehiculo.setAnio(nuevoAnio);
                     vehiculo.setMarca(nuevaMarca);
                     vehiculo.setModelo(nuevoModelo);
                     vehiculo.setPrecio(nuevoPrecio2);
                     vehiculo.setTipo(nuevoTipo2);
-                    break;
-                    
-                case 8:
-                    Empresas_Adheridas empresa = amiguis.get(indice);
-                    if(empresa == null){
-                        JOptionPane.showMessageDialog(null, "No se encontro un vehiculo con ese indice.");
-                          break;
+    }
+    public void editar_adherida(int id,String nuevoNombre3,String nuevaCuil,String nuevaDireccion,String nuevoTelefono,String nuevoRubro,String nuevoDuenio){
+        int indice=buscador_universal(id,8);
+        Empresas_Adheridas empresa = amiguis.get(indice);
+        if(empresa == null){
+                        JOptionPane.showMessageDialog(null, "No se encontro una empresa_adherida con ese indice.");
+                          return;
                     }
-                    /*String nombre;
-                    String cuil;
-                    String direccion;
-                    String telefono;
-                    String rubro;
-                    String duenio;*/
-                    String nuevoNombre3 = JOptionPane.showInputDialog("Ingrese el nuevo nombre.");
-                    String nuevaCuil = JOptionPane.showInputDialog("Ingrese el nuevo cuil.");
-                    String nuevaDireccion = JOptionPane.showInputDialog("Ingrese la nueva direccion.");
-                    String nuevoTelefono = JOptionPane.showInputDialog("Ingrese el nuevo numero telefonico.");
-                    String nuevoRubro = JOptionPane.showInputDialog("Ingrese el nuevo rubro.");
-                    String nuevoDuenio = JOptionPane.showInputDialog("Ingrese el nuevo dueño.");
-                    empresa.setNombre(nuevoNombre3);
+        empresa.setNombre(nuevoNombre3);
                     empresa.setCuil(nuevaCuil);
                     empresa.setDireccion(nuevaDireccion);
                     empresa.setTelefono(nuevoTelefono);
                     empresa.setRubro(nuevoRubro);
                     empresa.setDuenio(nuevoDuenio);
-                    break;
-               }
+    }
+    public void editar_ticket(int id, String nueva_fecha, int Nuevototal,String nuevoPago){
+        int indice=buscador_universal(id,9);
+        Ticket ticket=tickets.get(indice);
+        if(ticket==null){
+            JOptionPane.showMessageDialog(null,"No se encontro un ticket con ese indice");
+            return;
+        }
+        ticket.setPago(nuevoPago);
+        ticket.setFecha(nueva_fecha);
+        ticket.setTotal(Nuevototal);
+    }
+    
+    
                 
                
                     
-    }}
-
+    
+    
 
 }
