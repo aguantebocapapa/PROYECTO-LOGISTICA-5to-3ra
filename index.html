@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistica 32</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    
+    
+    <!-- BARRA DE BUSQUEDA -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                
+            Logistica
+            </a>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Ver envios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+            </li>
+            <button type="button" class="btn" aria-current="page" onclick="InicarSesion()">
+                Iniciar sesion
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- Titulo -->
+    <div class="col-md-7 mb-4 mb-md-0">
+        <h1> Proyecto Logistica </h1>
+    </div>
+
+    <!--Imagen del medio-->
+    <div class="d-flex justify-content-center">
+        <div class="bg-light p-6 rounded shadow-sm text-center" style="max-width: 800px; width: 100%;">
+            <img src="images.jpg" alt="Camión" class="img-fluid rounded">
+        </div>
+    </div>
+
+
+    <!-- BLoque de armado de pedido -->
+    <div class ="container-fluid">
+        <div class="container-fluid my-5">
+            <div class="row align-items-center bg-light p-5 rounded shadow-sm" style="min-height: 400px;">
+    
+                <!-- Columna Izquierda: Formulario -->
+                <div class="col-md-7 mb-4 mb-md-0">
+                    <h2 class="fw-bold mb-4">Pon tu codigo de pedido aqui!</h2>
+                    <div class="form-group" style="max-width: 500px;">
+                        <input type="text" class="form-control form-control-lg bg-white border-0 text-muted shadow-sm" placeholder="Ingrese tu codigo de pedido.">
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Imagen del camión -->
+                <div class="col-md-5 text-center">
+                    <img src="images.jpg" alt="" class="img-fluid rounded bg-white p-3 shadow-sm" style="max-width: 100%; height: auto;">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    
+    
+
+
+    <!-- TARJETA DE "COMO HACER UN ENVIO" -->
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body" style="min-height: 800px;">
+            <h5 class="card-title">COMO VER ENVIO</h5>
+            <p class="card-text">Paso 1: ir a "Ver envios"</p>
+            <p class="card-text">Paso 2: Poner el codigo del envio</p>    
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- check list -->
+    <ul class="list-group">
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+    <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
+    <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
+    <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+  </li>
+</ul>
+    
+</body>
+</html>
