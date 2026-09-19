@@ -13,13 +13,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Redes-20
  */
 public class VentanaEmpleado extends javax.swing.JFrame {
+    private Menu login;
     private Empresa gestion;
     private int contador;
     /**
      * Creates new form VentanaEmpleado
      */
-    public VentanaEmpleado(Empresa gestion, int contador) {
+    public VentanaEmpleado(Menu login,Empresa gestion, int contador) {
         initComponents();
+        this.login=login;
         this.gestion=gestion;
         this.contador=contador;
     }
@@ -129,6 +131,11 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -422,6 +429,12 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         gestion.eliminado_universal(id,2);
         actualizarTabla();
     }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void actualizarTabla(){
         DefaultTableModel modelo=(DefaultTableModel)tablaEmpleados.getModel();
