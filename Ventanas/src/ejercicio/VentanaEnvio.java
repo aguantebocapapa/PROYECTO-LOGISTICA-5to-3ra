@@ -5,17 +5,25 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaEnvio extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaEnvio
      */
-    public VentanaEnvio() {
+    public VentanaEnvio(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -49,6 +57,8 @@ public class VentanaEnvio extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnPaquetes = new javax.swing.JButton();
         btnVehiculos = new javax.swing.JButton();
+        btnAdd1 = new javax.swing.JButton();
+        btnAdd2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,20 +88,74 @@ public class VentanaEnvio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaEnvios);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnPaquetes.setText("Mostrar Paquetes");
+        btnPaquetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaquetesActionPerformed(evt);
+            }
+        });
 
         btnVehiculos.setText("Mostrar vehiculos");
+        btnVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehiculosActionPerformed(evt);
+            }
+        });
+
+        btnAdd1.setText("Agg_Paq");
+        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd1ActionPerformed(evt);
+            }
+        });
+
+        btnAdd2.setText("Agg_veh");
+        btnAdd2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,25 +196,29 @@ public class VentanaEnvio extends javax.swing.JFrame {
                         .addComponent(txtFecha))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAgregar)
-                                    .addComponent(btnEditar))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBuscar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnMostrar))
+                                        .addComponent(btnAgregar)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnBuscar))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnBorrar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnSalir))))
+                                        .addComponent(btnEditar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBorrar)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSalir)
+                                    .addComponent(btnMostrar)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnPaquetes)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnVehiculos)))
+                                .addComponent(btnVehiculos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdd1)
+                                .addGap(24, 24, 24)
+                                .addComponent(btnAdd2)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,17 +251,21 @@ public class VentanaEnvio extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnBuscar)
                     .addComponent(btnMostrar))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
+                    .addComponent(btnSalir)
                     .addComponent(btnBorrar)
-                    .addComponent(btnSalir))
-                .addGap(33, 33, 33)
+                    .addComponent(btnEditar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd1)
+                    .addComponent(btnAdd2))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPaquetes)
                     .addComponent(btnVehiculos))
@@ -204,42 +276,175 @@ public class VentanaEnvio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String num=txtEnvio.getText();
+        String fecha=txtFecha.getText();
+        String origen=txtOrigen.getText();
+        String destino=txtDestino.getText();
+        if("".equals(num) || "".equals(fecha) ||"".equals(origen) ||"".equals(destino) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num2=Integer.parseInt(num);
+        if(!origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!destino.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            contador++;
+            return;
+        }
+        Envio en=new Envio(num2,fecha,origen,destino);
+        gestion.agregarEnvio(en);
+        txtEnvio.setText("");
+        txtFecha.setText("");
+        txtOrigen.setText("");
+        txtDestino.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtEnvio.getText();
+        int num=Integer.parseInt(id);
+        Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
+        if(p!=null){
+            mostrar_envio(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String num=txtEnvio.getText();
+        String fecha=txtFecha.getText();
+        String origen=txtOrigen.getText();
+        String destino=txtDestino.getText();
+        if("".equals(num) || "".equals(fecha) ||"".equals(origen) ||"".equals(destino) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num2=Integer.parseInt(num);
+        if(!origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!destino.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            contador++;
+            return;
+        }
+        gestion.editar_envio(num2, fecha, origen, destino);
+        actualizarTabla();
+        txtEnvio.setText("");
+        txtFecha.setText("");
+        txtOrigen.setText("");
+        txtDestino.setText("");
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtEnvio.getText());
+        gestion.eliminado_universal(id,4);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        String id = txtEnvio.getText();
+        int num=Integer.parseInt(id);
+        int par=Integer.parseInt(txtPaquete.getText());
+        Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
+        if(p!=null){
+            Paquete sa=gestion.paquetes.get(gestion.buscador_universal(par, 5));
+            p.AgregarPaquete(sa);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnAdd1ActionPerformed
+
+    private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
+        String id = txtEnvio.getText();
+        int num=Integer.parseInt(id);
+        int par=Integer.parseInt(txtPaquete.getText());
+        Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
+        if(p!=null){
+            Vehiculo sa=gestion.vehiculos.get(gestion.buscador_universal(par, 7));
+            p.AgregarVehiculo(sa);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnAdd2ActionPerformed
+
+    private void btnPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaquetesActionPerformed
+        String id = txtEnvio.getText();
+        int num=Integer.parseInt(id);
+        Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
+        if(p!=null){
+            p.mostrar_paquete();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnPaquetesActionPerformed
+
+    private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed
+        String id = txtEnvio.getText();
+        int num=Integer.parseInt(id);
+        Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
+        if(p!=null){
+            p.mostrar_vehiculo();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnVehiculosActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaEnvios.getModel();
+        modelo.setRowCount(0);
+        for(Envio p:gestion.envios){
+            Object[] fila={
+                p.getNumEnvio(),
+                p.getFecha(),
+                p.getOrigen(),
+                p.getDestino()
+            };
+            modelo.addRow(fila);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaEnvio().setVisible(true);
-            }
-        });
     }
+    private void mostrar_envio(Envio p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaEnvios.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getNumEnvio(),
+                p.getFecha(),
+                p.getOrigen(),
+                p.getDestino()
+            };
+            modelo.addRow(fila);
+        }
+
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd1;
+    private javax.swing.JButton btnAdd2;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBuscar;

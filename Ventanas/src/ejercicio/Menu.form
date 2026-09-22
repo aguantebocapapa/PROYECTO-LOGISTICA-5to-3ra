@@ -41,11 +41,9 @@
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnEnvio" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="btnSalir" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnTicket" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnProducto" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="btnSalir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnTicket" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnProducto" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnEmpleado" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -75,7 +73,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnEmpleado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnEnvio" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEnvio" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="btnProducto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,6 +121,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion Envios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnvioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPaquete">
       <Properties>
@@ -138,6 +139,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion reportes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnTicket">
       <Properties>
