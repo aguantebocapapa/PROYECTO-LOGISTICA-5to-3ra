@@ -5,17 +5,25 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaProducto extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaProducto
      */
-    public VentanaProducto() {
+    public VentanaProducto(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -82,16 +90,46 @@ public class VentanaProducto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaproductos);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,45 +220,136 @@ public class VentanaProducto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaproductos.getModel();
+        modelo.setRowCount(0);
+        for(Producto p:gestion.productos){
+            Object[] fila={
+                p.getIdproducto(),
+                p.getNombremarca(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getStock(),
+                p.getTipo()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrra_producto(Producto p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaproductos.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getIdproducto(),
+                p.getNombremarca(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getStock(),
+                p.getTipo()
+            };
+            modelo.addRow(fila);
+        }
+    
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductoActionPerformed
+    
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String Producto=txtProducto.getText();
+        String marca=txtMarca.getText();
+        String descripcion=txtDescripcion.getText();
+        String precio=txtPrecio.getText();
+        String stock=txtStock.getText();
+        String tipo=txtTipo.getText();
+        if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Producto);
+        int num2=Integer.parseInt(stock);
+        double num3=Double.parseDouble(precio);
+        if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo Marca solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+            contador++;
+            return;
+        }
+        Producto en=new Producto(num,marca,descripcion,num3,num2,tipo);
+        gestion.agregarProducto(en);
+        txtProducto.setText("");
+        txtMarca.setText("");
+        txtDescripcion.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+        txtTipo.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtProducto.getText();
+        int num=Integer.parseInt(id);
+        Producto p=gestion.productos.get(gestion.buscador_universal(num,6));
+        if(p!=null){
+            mostrra_producto(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtProducto.getText());
+        gestion.eliminado_universal(id,6);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String Producto=txtProducto.getText();
+        String marca=txtMarca.getText();
+        String descripcion=txtDescripcion.getText();
+        String precio=txtPrecio.getText();
+        String stock=txtStock.getText();
+        String tipo=txtTipo.getText();
+        if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Producto);
+        int num2=Integer.parseInt(stock);
+        double num3=Double.parseDouble(precio);
+        if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo Marca solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+            contador++;
+            return;
+        }
+        gestion.editar_producto(num, marca, descripcion, num3, num2, tipo);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaProducto().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

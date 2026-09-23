@@ -116,6 +116,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion adheridos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdheridoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEnvio">
       <Properties>
@@ -129,11 +132,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion paquetes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaqueteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnProducto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion Productos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnReporte">
       <Properties>
@@ -147,11 +156,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion tickets"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTicketActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVehiculo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gestion vehiculos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVehiculoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSalir">
       <Properties>

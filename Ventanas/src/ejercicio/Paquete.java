@@ -70,7 +70,14 @@ public class Paquete {
     public void AgregarProducto(Producto p){
         productos.add(p);
     }
+    public void mostrar_info(){
+        for(Producto p:productos){
+            p.mostrarDatos();
+        }
+    }
+    
     public void MostrarPaquete(){
+        JOptionPane.showMessageDialog(null,"El paquete "+id_paquete+"\n con el peso "+peso+"\n con el volumen "+ volumen+"\ncon la fecha de ensamble "+ fecha_ensamble );
         for(Producto p:productos){
             p.mostrarDatos();
         }

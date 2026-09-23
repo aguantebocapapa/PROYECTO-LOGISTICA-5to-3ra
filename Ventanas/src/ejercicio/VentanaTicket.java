@@ -5,17 +5,25 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaTicket extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaTicket
      */
-    public VentanaTicket() {
+    public VentanaTicket(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -79,18 +87,53 @@ public class VentanaTicket extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaTickets);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnClinn.setText("Mostrar cliente del ticket");
+        btnClinn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClinnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,40 +222,114 @@ public class VentanaTicket extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String Ticket=txtTicket.getText();
+        String fecha=txtFecha.getText();
+        String total=txtTotal.getText();
+        String pago=txtPago.getText();
+        String cliente=txtCliente.getText();
+        if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)||"".equals(cliente)  ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Ticket);
+        int num2=Integer.parseInt(total);
+        int num3=Integer.parseInt(cliente);
+        Cliente p=gestion.clientes.get(gestion.buscador_universal(num3,1));
+        if(p!=null){
+            Ticket en=new Ticket(num,fecha,p,num2,pago);
+            gestion.agregar_tickets(en);
+            txtTicket.setText("");
+            txtFecha.setText("");
+            txtTotal.setText("");
+            txtPago.setText("");
+            txtCliente.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtTicket.getText();
+        int num=Integer.parseInt(id);
+        Ticket p=gestion.tickets.get(gestion.buscador_universal(num,9));
+        if(p!=null){
+            mostrar_ticket(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtTicket.getText());
+        gestion.eliminado_universal(id,9);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String Ticket=txtTicket.getText();
+        String fecha=txtFecha.getText();
+        String total=txtTotal.getText();
+        String pago=txtPago.getText();
+        if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)  ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Ticket);
+        int num2=Integer.parseInt(total);
+        gestion.editar_ticket(num, fecha, num2, pago);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnClinnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClinnActionPerformed
+        String id = txtTicket.getText();
+        int num=Integer.parseInt(id);
+        Ticket p=gestion.tickets.get(gestion.buscador_universal(num,9));
+        if(p!=null){
+            p.cliente.mostrarPersona();
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnClinnActionPerformed
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaTickets.getModel();
+        modelo.setRowCount(0);
+        for(Ticket p:gestion.tickets){
+            Object[] fila={
+                p.getIdticket(),
+                p.getFecha(),
+                p.getTotal(),
+                p.getPago()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrar_ticket(Ticket p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaTickets.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getIdticket(),
+                p.getFecha(),
+                p.getTotal(),
+                p.getPago()
+            };
+            modelo.addRow(fila);
+        }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaTicket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaTicket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaTicket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaTicket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaTicket().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

@@ -5,17 +5,25 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaVehiculo extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaVehiculo
      */
-    public VentanaVehiculo() {
+    public VentanaVehiculo(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -82,16 +90,46 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         jLabel6.setText("Tipo");
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,45 +209,134 @@ public class VentanaVehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaVehiculos.getModel();
+        modelo.setRowCount(0);
+        for(Vehiculo p:gestion.vehiculos){
+            Object[] fila={
+                p.getIdvehiculo(),
+                p.getModelo(),
+                p.getMarca(),
+                p.getPrecio(),
+                p.getAnio(),
+                p.getTipo()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrar_Vehiculo(Vehiculo p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaVehiculos.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getIdvehiculo(),
+                p.getModelo(),
+                p.getMarca(),
+                p.getPrecio(),
+                p.getAnio(),
+                p.getTipo()
+            };
+            modelo.addRow(fila);
+        }
+    
     private void txtVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVehiculoActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String Vehiculo=txtVehiculo.getText();
+        String modelo=txtModelo.getText();
+        String marca=txtMarca.getText();
+        String precio=txtPrecio.getText();
+        String anio=txtAnio.getText();
+        String tipo=txtTipo.getText();
+        if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Vehiculo);
+        int num2=Integer.parseInt(precio);
+        int num3=Integer.parseInt(anio);
+        if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo marca solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!modelo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo modelo, solo puede contener letras");
+            contador++;
+            return;
+        }
+        Vehiculo en=new Vehiculo(num,modelo,marca,num2,num3,tipo);
+        gestion.agregarVehiculo(en);
+        txtVehiculo.setText("");
+        txtModelo.setText("");
+        txtMarca.setText("");
+        txtPrecio.setText("");
+        txtAnio.setText("");
+        txtTipo.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtVehiculo.getText();
+        int num=Integer.parseInt(id);
+        Vehiculo p=gestion.vehiculos.get(gestion.buscador_universal(num,7));
+        if(p!=null){
+            mostrar_Vehiculo(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtVehiculo.getText());
+        gestion.eliminado_universal(id,7);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String Vehiculo=txtVehiculo.getText();
+        String modelo=txtModelo.getText();
+        String marca=txtMarca.getText();
+        String precio=txtPrecio.getText();
+        String anio=txtAnio.getText();
+        String tipo=txtTipo.getText();
+        if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(Vehiculo);
+        int num2=Integer.parseInt(precio);
+        int num3=Integer.parseInt(anio);
+        if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo marca solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!modelo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo modelo, solo puede contener letras");
+            contador++;
+            return;
+        }
+        gestion.editar_vehiculo(num, modelo, marca, num2, num3, tipo);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaVehiculo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

@@ -5,17 +5,25 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaAdherido extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaAdherido
      */
-    public VentanaAdherido() {
+    public VentanaAdherido(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
 
     /**
@@ -86,12 +94,32 @@ public class VentanaAdherido extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaAdheridos);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +129,11 @@ public class VentanaAdherido extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,49 +234,136 @@ public class VentanaAdherido extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaAdheridos.getModel();
+        modelo.setRowCount(0);
+        for(Empresas_Adheridas p:gestion.amiguis){
+            Object[] fila={
+                p.getId_empresa(),
+                p.getNombre(),
+                p.getCuil(),
+                p.getDireccion(),
+                p.getTelefono(),
+                p.getRubro(),
+                p.getDuenio()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrar_Empresa(Empresas_Adheridas p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaAdheridos.getModel();
+        modelo.setRowCount(0);
+          Object[] fila={
+                p.getId_empresa(),
+                p.getNombre(),
+                p.getCuil(),
+                p.getDireccion(),
+                p.getTelefono(),
+                p.getRubro(),
+                p.getDuenio()
+            };
+            modelo.addRow(fila);
+        }
+    
     private void txtRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRubroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRubroActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        // TODO add your handling code here:
+        int id=Integer.parseInt(txtEmpresa.getText());
+        gestion.eliminado_universal(id,8);
+        actualizarTabla();
     }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String Empresa=txtEmpresa.getText();
+        String nombre=txtNombre.getText();
+        String cuil=txtCuil.getText();
+        String direccion=txtDireccion.getText();
+        String rubro=txtRubro.getText();
+        String telefono=txtTelefono.getText();
+        String duenio=txtDuenio.getText();
+        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num2=Integer.parseInt(Empresa);
+        if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo Nombre solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!duenio.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo Duenio, solo puede contener letras");
+            contador++;
+            return;
+        }
+        Empresas_Adheridas en=new Empresas_Adheridas(num2,nombre,cuil,direccion,telefono,rubro,duenio);
+        gestion.agregarAdheridos(en);
+        txtEmpresa.setText("");
+        txtNombre.setText("");
+        txtCuil.setText("");
+        txtDireccion.setText("");
+        txtRubro.setText("");
+        txtTelefono.setText("");
+        txtDuenio.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String Empresa=txtEmpresa.getText();
+        String nombre=txtNombre.getText();
+        String cuil=txtCuil.getText();
+        String direccion=txtDireccion.getText();
+        String rubro=txtRubro.getText();
+        String telefono=txtTelefono.getText();
+        String duenio=txtDuenio.getText();
+        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num2=Integer.parseInt(Empresa);
+        if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            contador++;
+            return;
+        }
+       
+        if(!duenio.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            contador++;
+            return;
+        }
+        gestion.editar_adherida(num2, nombre, cuil, direccion, telefono, rubro, duenio);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtEmpresa.getText();
+        int num=Integer.parseInt(id);
+        Empresas_Adheridas p=gestion.amiguis.get(gestion.buscador_universal(num,8));
+        if(p!=null){
+            mostrar_Empresa(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdherido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdherido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdherido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaAdherido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaAdherido().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

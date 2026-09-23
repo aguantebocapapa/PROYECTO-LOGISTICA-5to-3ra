@@ -64,6 +64,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnAdherido.setText("Gestion adheridos");
+        btnAdherido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdheridoActionPerformed(evt);
+            }
+        });
 
         btnEnvio.setText("Gestion Envios");
         btnEnvio.addActionListener(new java.awt.event.ActionListener() {
@@ -73,8 +78,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnPaquete.setText("Gestion paquetes");
+        btnPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaqueteActionPerformed(evt);
+            }
+        });
 
         btnProducto.setText("Gestion Productos");
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
 
         btnReporte.setText("Gestion reportes");
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -84,8 +99,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnTicket.setText("Gestion tickets");
+        btnTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTicketActionPerformed(evt);
+            }
+        });
 
         btnVehiculo.setText("Gestion vehiculos");
+        btnVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehiculoActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +211,41 @@ public class Menu extends javax.swing.JFrame {
         ventanadatos.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_btnReporteActionPerformed
+
+    private void btnAdheridoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdheridoActionPerformed
+        VentanaAdherido ventanadatos=new VentanaAdherido(this,gestion,contador);
+        ventanadatos.setVisible(true);
+        ventanadatos.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAdheridoActionPerformed
+
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        VentanaProducto ventanadatos=new VentanaProducto(this,gestion,contador);
+        ventanadatos.setVisible(true);
+        ventanadatos.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnProductoActionPerformed
+
+    private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
+        VentanaTicket ventanadatos=new VentanaTicket(this,gestion,contador);
+        ventanadatos.setVisible(true);
+        ventanadatos.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTicketActionPerformed
+
+    private void btnPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaqueteActionPerformed
+        VentanaPaquete ventanadatos=new VentanaPaquete(this,gestion,contador);
+        ventanadatos.setVisible(true);
+        ventanadatos.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPaqueteActionPerformed
+
+    private void btnVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoActionPerformed
+        VentanaVehiculo ventanadatos=new VentanaVehiculo(this,gestion,contador);
+        ventanadatos.setVisible(true);
+        ventanadatos.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVehiculoActionPerformed
 
     /**
      * @param args the command line arguments

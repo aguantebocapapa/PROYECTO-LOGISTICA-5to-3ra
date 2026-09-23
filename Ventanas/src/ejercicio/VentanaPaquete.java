@@ -5,19 +5,53 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Redes-20
  */
 public class VentanaPaquete extends javax.swing.JFrame {
-
+    private Menu login;
+    private Empresa gestion;
+    private int contador;
     /**
      * Creates new form VentanaPaquete
      */
-    public VentanaPaquete() {
+    public VentanaPaquete(Menu login,Empresa gestion,int contador) {
         initComponents();
+        this.login=login;
+        this.gestion=gestion;
+        this.contador=contador;
     }
-
+    
+    private void actualizarTabla(){
+        DefaultTableModel modelo=(DefaultTableModel)tablaPaquetes.getModel();
+        modelo.setRowCount(0);
+        for(Paquete p:gestion.paquetes){
+            Object[] fila={
+                p.getId_paquete(),
+                p.getPeso(),
+                p.getVolumen(),
+                p.getFecha_ensamble()
+            };
+            modelo.addRow(fila);
+        }
+    }
+    private void mostrar_paquete(Paquete p){
+        DefaultTableModel modelo=(DefaultTableModel)tablaPaquetes.getModel();
+        modelo.setRowCount(0);
+         Object[] fila={
+                p.getId_paquete(),
+                p.getPeso(),
+                p.getVolumen(),
+                p.getFecha_ensamble()
+            };
+            modelo.addRow(fila);
+        }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,20 +108,60 @@ public class VentanaPaquete extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaPaquetes);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnAdd1.setText("Agregar producto");
+        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd1ActionPerformed(evt);
+            }
+        });
 
         btnMosPro.setText("Mostrar productos del paquete");
+        btnMosPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMosProActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,51 +241,106 @@ public class VentanaPaquete extends javax.swing.JFrame {
                     .addComponent(btnBorrar)
                     .addComponent(btnMostrar)
                     .addComponent(btnSalir))
-                .addGap(79, 79, 79)
+                .addGap(70, 70, 70)
                 .addComponent(btnAdd1)
                 .addGap(60, 60, 60)
                 .addComponent(btnMosPro)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String paquete=txtPaquete.getText();
+        String peso=txtPeso.getText();
+        String volumen=txtVolumen.getText();
+        String fecha=txtFecha.getText();
+        if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(paquete);
+        double num2=Double.parseDouble(peso);
+        double num3=Double.parseDouble(volumen);
+        Paquete p=new Paquete(num,num2,num3,fecha);
+        gestion.agregarPaquete(p);
+        txtPaquete.setText("");
+        txtPeso.setText("");
+        txtVolumen.setText("");
+        txtFecha.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String id = txtPaquete.getText();
+        int num=Integer.parseInt(id);
+        Paquete p=gestion.paquetes.get(gestion.buscador_universal(num,5));
+        if(p!=null){
+            mostrar_paquete(p);
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        actualizarTabla();
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id=Integer.parseInt(txtPaquete.getText());
+        gestion.eliminado_universal(id,5);
+        actualizarTabla();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String paquete=txtPaquete.getText();
+        String peso=txtPeso.getText();
+        String volumen=txtVolumen.getText();
+        String fecha=txtFecha.getText();
+        if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int num=Integer.parseInt(paquete);
+        double num2=Double.parseDouble(peso);
+        double num3=Double.parseDouble(volumen);
+        gestion.editar_paquete(num, num2, num3, fecha);
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+        login.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        int paq=Integer.parseInt(txtPaquete.getText());
+        Paquete p=gestion.paquetes.get(gestion.buscador_universal(paq, 5));
+        if(p!=null){
+            String id = txtProducto.getText();
+        int num=Integer.parseInt(id);
+        Producto producto=gestion.productos.get(gestion.buscador_universal(num,6));
+            if(producto!=null){
+                p.AgregarProducto(producto);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
+        }
+    }//GEN-LAST:event_btnAdd1ActionPerformed
+
+    private void btnMosProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMosProActionPerformed
+        int paq=Integer.parseInt(txtPaquete.getText());
+        Paquete p=gestion.paquetes.get(gestion.buscador_universal(paq, 5));
+        p.mostrar_info();
+    }//GEN-LAST:event_btnMosProActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPaquete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPaquete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPaquete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPaquete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPaquete().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd1;
