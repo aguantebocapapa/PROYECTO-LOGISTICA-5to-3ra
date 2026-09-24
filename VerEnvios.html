@@ -6,9 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="history.back()">Volver atrás</button>
     <h1>Envios  disponibles</h1>
     <p id="mostrar"></p>
     <script>
+        
         var texto="";
         var envioss =JSON.parse(localStorage.getItem("envios"));
         envioss.forEach(element => {
