@@ -12,9 +12,10 @@
     <p>Ingrese el nombre: </p>
     <input id="Nombre" type="text"  > 
     <p>Ingrese la contraseña: </p>
-    <input id="contra" type="text"  >  
+    <input id="contra" type="password"  >  
     <button onclick="cargar_datos()">Iniciar sesion</button>  
     <button onclick="cerrar_sesion()">Cerrar sesion</button>
+    <button onclick="window.open('Crear.html', '_self');">Crear cuenta</button>
     <script>
         var usuarios =JSON.parse(localStorage.getItem("lista"));
         var Usuario = JSON.parse(localStorage.getItem("Emm"));
@@ -26,14 +27,14 @@
             Contrasenia: contras
             };
             localStorage.setItem("Emm", JSON.stringify(auxiliar));
-            window.location.reload();
+            window.open('index.html', '_self');
 
         }
         function cerrar_sesion(){
             Usuario.Nombre=null;
             Usuario.Contrasenia=null;
             localStorage.setItem("Emm", JSON.stringify(Usuario));
-            window.location.reload();
+            window.open('index.html', '_self');
         }
         if(Usuario.Nombre!=null){
             let total=usuarios.length;

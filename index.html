@@ -14,18 +14,18 @@
     <!-- BARRA DE BUSQUEDA -->
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand"  onclick="window.location.reload()">
                 
             Logistica
             </a>
 
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Ver envios</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="window.open('VerEnvios.html', '_self');">Ver envios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="alert('Numero de  telefono : +54 911 6767 6767 \nCorreo electronico : logistica32@gmail.com  \nNombre de contacto:Logistica 32 Equipo 6')">Contacto</a>
             </li>
-            <button type="button" class="btn" aria-current="page" onclick="InicarSesion()">
+            <button id="nombre_inicio" type="button" class="btn" aria-current="page" onclick="window.open('Inicio_sesion.html', '_self');">
                 Iniciar sesion
             </button>
         </div>
@@ -40,27 +40,27 @@
     <!--Imagen del medio-->
     <div class="d-flex justify-content-center">
         <div class="bg-light p-6 rounded shadow-sm text-center" style="max-width: 800px; width: 100%;">
-            <img src="images.jpg" alt="Camión" class="img-fluid rounded">
+            <img src="https://static.wikia.nocookie.net/thomasysusamigosespanol/images/f/fc/ThomasCGI2.png/revision/latest?cb=20240401221048&path-prefix=es" alt="Camión" class="img-fluid rounded">
         </div>
     </div>
 
 
     <!-- BLoque de armado de pedido -->
-    <div class ="container-fluid">
+    <div class ="container-fluid" >
         <div class="container-fluid my-5">
             <div class="row align-items-center bg-light p-5 rounded shadow-sm" style="min-height: 400px;">
-    
+                
                 <!-- Columna Izquierda: Formulario -->
                 <div class="col-md-7 mb-4 mb-md-0">
                     <h2 class="fw-bold mb-4">Pon tu codigo de pedido aqui!</h2>
                     <div class="form-group" style="max-width: 500px;">
-                        <input type="text" class="form-control form-control-lg bg-white border-0 text-muted shadow-sm" placeholder="Ingrese tu codigo de pedido.">
+                        <input type="text" id="Ingreso"  class="form-control form-control-lg bg-white border-0 text-muted shadow-sm" placeholder="Ingrese tu codigo de pedido.">
                     </div>
                 </div>
 
                 <!-- Columna Derecha: Imagen del camión -->
                 <div class="col-md-5 text-center">
-                    <img src="images.jpg" alt="" class="img-fluid rounded bg-white p-3 shadow-sm" style="max-width: 100%; height: auto;">
+                    <img src="image_df3ded71.jpeg" alt="" class="img-fluid rounded bg-white p-3 shadow-sm" style="max-width: 100%; height: auto;">
                 </div>
 
             </div>
@@ -77,10 +77,10 @@
     <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
         <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+        <img src="https://static.wikia.nocookie.net/delta-rune/images/b/b5/Manual.png/revision/latest/thumbnail/width/360/height/360?cb=20220313133555&path-prefix=es" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
-        <div class="card-body" style="min-height: 800px;">
+        <div class="card-body">
             <h5 class="card-title">COMO VER ENVIO</h5>
             <p class="card-text">Paso 1: ir a "Ver envios"</p>
             <p class="card-text">Paso 2: Poner el codigo del envio</p>    
@@ -105,6 +105,26 @@
     <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
   </li>
 </ul>
-    
+    <script>
+        document.addEventListener("keydown",function(event){  
+            if(event.key==="Enter"){
+                    let textoo=document.getElementById("Ingreso").value;
+                    let entero=Number(textoo);
+                    localStorage.setItem("Identificador",entero);
+                    window.open('VerEnvio.html', '_self');
+            }
+        }); 
+        var Usuario = JSON.parse(localStorage.getItem("Emm"));
+        var usuarios =JSON.parse(localStorage.getItem("lista"));
+        if(Usuario.Nombre!=null){
+            let total=usuarios.length;
+            usuarios.forEach(element => {
+                if(element.Nombre==Usuario.Nombre && element.Contrasenia==Usuario.Contrasenia){
+                    document.getElementById("nombre_inicio").textContent =Usuario.Nombre;
+                }
+                
+            });
+    }
+    </script>
 </body>
 </html>

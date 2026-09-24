@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Envios  disponibles</h1>
+    <p id="mostrar"></p>
+    <script>
+        var texto="";
+        var envioss =JSON.parse(localStorage.getItem("envios"));
+        var identificator=localStorage.getItem("Identificador");
+        envioss.forEach(element => {
+            if(element.ID==identificator){
+                texto=texto+"ID: "+element.ID+" Fecha: "+element.Fecha +" Origen: "+element.Origen+" Destino:"+element.Destino+" Estado: "+element.Estado+" \n";
+            }
+            
+        });
+        document.getElementById("mostrar").innerText=texto;
+    </script>
+</body>
+</html>
