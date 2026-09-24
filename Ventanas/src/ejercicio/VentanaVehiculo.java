@@ -236,6 +236,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
                 p.getTipo()
             };
             modelo.addRow(fila);
+          
         }
     
     private void txtVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculoActionPerformed
@@ -243,12 +244,24 @@ public class VentanaVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVehiculoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador == 10){
+            System.exit(0);
+        }
         String Vehiculo=txtVehiculo.getText();
         String modelo=txtModelo.getText();
         String marca=txtMarca.getText();
         String precio=txtPrecio.getText();
         String anio=txtAnio.getText();
         String tipo=txtTipo.getText();
+        if(!anio.matches("[0-9]+")){
+            anio="";
+        }
+        if(!precio.matches("[0-9]+")){
+            precio="";
+        }
+        if(!Vehiculo.matches("[0-9]+")){
+            Vehiculo="";
+        }
         if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -276,6 +289,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         txtPrecio.setText("");
         txtAnio.setText("");
         txtTipo.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -283,7 +297,18 @@ public class VentanaVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtVehiculo.getText();
+        if(!id.matches("[0-9]+")){
+            id="";
+        }
+        if("".equals(id)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
         int num=Integer.parseInt(id);
         Vehiculo p=gestion.vehiculos.get(gestion.buscador_universal(num,7));
         if(p!=null){
@@ -291,21 +316,38 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtVehiculo.getText());
         gestion.eliminado_universal(id,7);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Vehiculo=txtVehiculo.getText();
         String modelo=txtModelo.getText();
         String marca=txtMarca.getText();
         String precio=txtPrecio.getText();
         String anio=txtAnio.getText();
         String tipo=txtTipo.getText();
+        if(!Vehiculo.matches("[0-9]+")){
+            Vehiculo="";
+        }
+        if(!anio.matches("[0-9]+")){
+            anio="";
+        }
+        if(!precio.matches("[0-9]+")){
+            precio="";
+        }
         if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -326,6 +368,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
             return;
         }
         gestion.editar_vehiculo(num, modelo, marca, num2, num3, tipo);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

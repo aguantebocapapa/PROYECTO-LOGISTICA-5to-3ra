@@ -223,11 +223,23 @@ public class VentanaTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Ticket=txtTicket.getText();
         String fecha=txtFecha.getText();
         String total=txtTotal.getText();
         String pago=txtPago.getText();
         String cliente=txtCliente.getText();
+        if(!Ticket.matches("[0-9]+")){
+            Ticket="";
+        }
+        if(!total.matches("[0-9]+")){
+            total="";
+        }
+        if(!cliente.matches("[0-9]+")){
+            cliente="";
+        }
         if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)||"".equals(cliente)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -248,6 +260,7 @@ public class VentanaTicket extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -256,7 +269,18 @@ public class VentanaTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtTicket.getText();
+        if(!id.matches("[0-9]+")){
+            id="";
+        }
+        if("".equals(id)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
         int num=Integer.parseInt(id);
         Ticket p=gestion.tickets.get(gestion.buscador_universal(num,9));
         if(p!=null){
@@ -264,27 +288,43 @@ public class VentanaTicket extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtTicket.getText());
         gestion.eliminado_universal(id,9);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Ticket=txtTicket.getText();
         String fecha=txtFecha.getText();
         String total=txtTotal.getText();
         String pago=txtPago.getText();
+        if(!Ticket.matches("[0-9]+")){
+            Ticket="";
+        }
+         if(!total.matches("[0-9]+")){
+            total="";
+        }
         if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
         int num=Integer.parseInt(Ticket);
         int num2=Integer.parseInt(total);
         gestion.editar_ticket(num, fecha, num2, pago);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

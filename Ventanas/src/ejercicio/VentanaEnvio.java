@@ -277,7 +277,13 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String num=txtEnvio.getText();
+          if(!num.matches("[0-9]+")){
+            num="";
+        }
         String fecha=txtFecha.getText();
         String origen=txtOrigen.getText();
         String destino=txtDestino.getText();
@@ -304,9 +310,13 @@ public class VentanaEnvio extends javax.swing.JFrame {
         txtFecha.setText("");
         txtOrigen.setText("");
         txtDestino.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
         Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
@@ -315,6 +325,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -322,7 +333,13 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String num=txtEnvio.getText();
+          if(!num.matches("[0-9]+")){
+            num="";
+        }
         String fecha=txtFecha.getText();
         String origen=txtOrigen.getText();
         String destino=txtDestino.getText();
@@ -349,12 +366,17 @@ public class VentanaEnvio extends javax.swing.JFrame {
         txtFecha.setText("");
         txtOrigen.setText("");
         txtDestino.setText("");
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtEnvio.getText());
         gestion.eliminado_universal(id,4);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

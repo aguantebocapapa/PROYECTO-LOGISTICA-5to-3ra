@@ -253,9 +253,18 @@ public class VentanaPaquete extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String paquete=txtPaquete.getText();
         String peso=txtPeso.getText();
+         if(!peso.matches("[0-9]+")){
+            peso="";
+        }
         String volumen=txtVolumen.getText();
+          if(!volumen.matches("[0-9]+")){
+            volumen="";
+        }
         String fecha=txtFecha.getText();
         if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -271,9 +280,13 @@ public class VentanaPaquete extends javax.swing.JFrame {
         txtPeso.setText("");
         txtVolumen.setText("");
         txtFecha.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtPaquete.getText();
         int num=Integer.parseInt(id);
         Paquete p=gestion.paquetes.get(gestion.buscador_universal(num,5));
@@ -282,6 +295,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -289,15 +303,28 @@ public class VentanaPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtPaquete.getText());
         gestion.eliminado_universal(id,5);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String paquete=txtPaquete.getText();
         String peso=txtPeso.getText();
+          if(!peso.matches("[0-9]+")){
+            peso="";
+        }
         String volumen=txtVolumen.getText();
+        if(!volumen.matches("[0-9]+")){
+            volumen="";
+        }
         String fecha=txtFecha.getText();
         if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -308,6 +335,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
         double num2=Double.parseDouble(peso);
         double num3=Double.parseDouble(volumen);
         gestion.editar_paquete(num, num2, num3, fecha);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

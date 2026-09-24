@@ -187,10 +187,11 @@ public class VentanaReporte extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(txtDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(btnMostrar)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAgregar)
+                        .addComponent(btnMostrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
@@ -207,8 +208,14 @@ public class VentanaReporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String num=txtReporte.getText();
         String detail=txtDetalle.getText();
+        if(!num.matches("[0-9]+")){
+            num="";
+        }
         if("".equals(num) || "".equals(detail)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -223,7 +230,18 @@ public class VentanaReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtReporte.getText();
+        if(!id.matches("[0-9]+")){
+            id="";
+        }
+        if("".equals(id)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
         int num=Integer.parseInt(id);
         Reporte p=gestion.reportes.get(gestion.buscador_universal(num,3));
         if(p!=null){
@@ -231,6 +249,7 @@ public class VentanaReporte extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -238,8 +257,14 @@ public class VentanaReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String num=txtReporte.getText();
         String detail=txtDetalle.getText();
+        if(!num.matches("[0-9]+")){
+            num="";
+        }
         if("".equals(num) || "".equals(detail)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -248,6 +273,7 @@ public class VentanaReporte extends javax.swing.JFrame {
         int num2=Integer.parseInt(num);
         gestion.editar_reporte(num2, detail);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -275,6 +301,9 @@ public class VentanaReporte extends javax.swing.JFrame {
 
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
         String id = txtReporte.getText();
+        if(!id.matches("[0-9]+")){
+            id="";
+        }
         int num=Integer.parseInt(id);
         String id2 = txtTicket.getText();
         int num2=Integer.parseInt(id2);

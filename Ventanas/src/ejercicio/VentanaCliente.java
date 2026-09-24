@@ -254,15 +254,30 @@ public class VentanaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String dni = txtDni.getText();
+        if(!dni.matches("[0-9]+")){
+            dni="";
+        } 
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String Email = txtEmail.getText();
         String telefono = txtTelefono.getText();
+          if(!telefono.matches("[0-9]+")){
+            telefono="";
+        }
         String id_cliente=txtCliente.getText();
+          if(!id_cliente.matches("[0-9]+")){
+            id_cliente="";
+        }
         String habi=txtHabitual.getText();
         String comp=txtCompras.getText();
         String pesu=txtPresupuesto.getText();
+        if(!pesu.matches("[0-9]+")){
+            pesu="";
+        }  
         if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(Email) || "".equals(telefono)||"".equals(id_cliente)||"".equals(comp)||"".equals(habi)||"".equals(pesu) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -317,6 +332,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         txtHabitual.setText("");
         txtCompras.setText("");
         txtPresupuesto.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -324,6 +340,9 @@ public class VentanaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtCliente.getText();
         int num=Integer.parseInt(id);
         Cliente p=gestion.clientes.get(gestion.buscador_universal(num,1));
@@ -332,24 +351,43 @@ public class VentanaCliente extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtCliente.getText());
         gestion.eliminado_universal(id,1);
         actualizarTabla();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String dni = txtDni.getText();
+        if(!dni.matches("[0-9]+")){
+           dni="";
+        } 
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String Email = txtEmail.getText();
         String telefono = txtTelefono.getText();
+        if(!telefono.matches("[0-9]+")){
+            telefono="";
+        } 
         String id_cliente=txtCliente.getText();
+        if(!id_cliente.matches("[0-9]+")){
+            id_cliente="";
+        } 
         String habi=txtHabitual.getText();
         String comp=txtCompras.getText();
         String pesu=txtPresupuesto.getText();
+        if(!pesu.matches("[0-9]+")){
+            pesu="";
+        } 
         if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(Email) || "".equals(telefono)||"".equals(id_cliente)||"".equals(comp)||"".equals(habi)||"".equals(pesu) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -390,6 +428,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         }
         gestion.editar_cliente(num2, nombre, apellido, dni, Email, telefono, habi, num, num3);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

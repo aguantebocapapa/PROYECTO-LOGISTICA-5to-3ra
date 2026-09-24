@@ -255,11 +255,20 @@ public class VentanaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProductoActionPerformed
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Producto=txtProducto.getText();
         String marca=txtMarca.getText();
         String descripcion=txtDescripcion.getText();
         String precio=txtPrecio.getText();
+         if(!precio.matches("[0-9]+")){
+            precio="";
+        }
         String stock=txtStock.getText();
+         if(!stock.matches("[0-9]+")){
+            stock="";
+        }
         String tipo=txtTipo.getText();
         if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -288,9 +297,13 @@ public class VentanaProducto extends javax.swing.JFrame {
         txtPrecio.setText("");
         txtStock.setText("");
         txtTipo.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtProducto.getText();
         int num=Integer.parseInt(id);
         Producto p=gestion.productos.get(gestion.buscador_universal(num,6));
@@ -299,6 +312,7 @@ public class VentanaProducto extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -306,17 +320,31 @@ public class VentanaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtProducto.getText());
         gestion.eliminado_universal(id,6);
         actualizarTabla();
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Producto=txtProducto.getText();
         String marca=txtMarca.getText();
         String descripcion=txtDescripcion.getText();
         String precio=txtPrecio.getText();
+         if(!precio.matches("[0-9]+")){
+            precio="";
+        }
+        
         String stock=txtStock.getText();
+         if(!stock.matches("[0-9]+")){
+            stock="";
+        }
         String tipo=txtTipo.getText();
         if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -338,6 +366,7 @@ public class VentanaProducto extends javax.swing.JFrame {
             return;
         }
         gestion.editar_producto(num, marca, descripcion, num3, num2, tipo);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

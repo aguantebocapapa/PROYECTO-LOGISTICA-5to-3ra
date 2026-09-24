@@ -271,18 +271,29 @@ public class VentanaAdherido extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRubroActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtEmpresa.getText());
         gestion.eliminado_universal(id,8);
         actualizarTabla();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Empresa=txtEmpresa.getText();
         String nombre=txtNombre.getText();
         String cuil=txtCuil.getText();
         String direccion=txtDireccion.getText();
         String rubro=txtRubro.getText();
         String telefono=txtTelefono.getText();
+        if(!cuil.matches("[0-9]+") ||!telefono.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Inhhreso");
+            cuil="";
+            telefono="";
+        } 
         String duenio=txtDuenio.getText();
         if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -310,6 +321,7 @@ public class VentanaAdherido extends javax.swing.JFrame {
         txtRubro.setText("");
         txtTelefono.setText("");
         txtDuenio.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -317,12 +329,21 @@ public class VentanaAdherido extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String Empresa=txtEmpresa.getText();
         String nombre=txtNombre.getText();
         String cuil=txtCuil.getText();
+        if(!cuil.matches("[0-9]+")){
+            cuil="";
+        } 
         String direccion=txtDireccion.getText();
         String rubro=txtRubro.getText();
         String telefono=txtTelefono.getText();
+        if(!telefono.matches("[0-9]+")){
+            telefono="";
+        } 
         String duenio=txtDuenio.getText();
         if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -342,9 +363,13 @@ public class VentanaAdherido extends javax.swing.JFrame {
             return;
         }
         gestion.editar_adherida(num2, nombre, cuil, direccion, telefono, rubro, duenio);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtEmpresa.getText();
         int num=Integer.parseInt(id);
         Empresas_Adheridas p=gestion.amiguis.get(gestion.buscador_universal(num,8));
@@ -353,6 +378,7 @@ public class VentanaAdherido extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed

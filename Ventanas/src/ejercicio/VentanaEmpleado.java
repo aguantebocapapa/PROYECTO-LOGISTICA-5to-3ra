@@ -263,12 +263,21 @@ public class VentanaEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }    
         int idempleado = Integer.parseInt(txtEmpleado.getText());
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String dni = txtDni.getText();
+          if(!dni.matches("[0-9]+")){
+            dni="";
+        }
         String email = txtEmail.getText();
         String numero_telefono = txtTelefono.getText();
+          if(!numero_telefono.matches("[0-9]+")){
+            numero_telefono="";
+        }
         String sector = txtSector.getText();
         String cargo = txtCargo.getText();
         String rol = txtRol.getText();
@@ -339,9 +348,13 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         txtSector.setText("");
         txtCargo.setText("");
         txtRol.setText("");
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         String id = txtEmpleado.getText();
         int num=Integer.parseInt(id);
         Empleado emp = gestion.empleados.get(gestion.buscador_universal(num,2));
@@ -349,7 +362,9 @@ public class VentanaEmpleado extends javax.swing.JFrame {
             mostrar_empleado(emp);
         }else{
             JOptionPane.showMessageDialog(null, "No existen empleados con el ID ingresado.");
+            
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -357,12 +372,21 @@ public class VentanaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }    
         int idempleado = Integer.parseInt(txtEmpleado.getText());
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String dni = txtDni.getText();
+          if(!dni.matches("[0-9]+")){
+            dni="";
+        }
         String email = txtEmail.getText();
         String numero_telefono = txtTelefono.getText();
+          if(!numero_telefono.matches("[0-9]+")){
+            numero_telefono="";
+        }
         String sector = txtSector.getText();
         String cargo = txtCargo.getText();
         String rol = txtRol.getText();
@@ -371,6 +395,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
+            
         }
 
         
@@ -422,12 +447,21 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         
         gestion.editar_empleado(idempleado, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
         actualizarTabla();
+                if (contador >= 10){
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtEmpleado.getText());
         gestion.eliminado_universal(id,2);
         actualizarTabla();
+        if (contador >= 10){
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
