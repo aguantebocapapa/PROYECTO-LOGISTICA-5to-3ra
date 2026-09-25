@@ -244,7 +244,8 @@ public class VentanaVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVehiculoActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (contador == 10){
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String Vehiculo=txtVehiculo.getText();
@@ -298,6 +299,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String id = txtVehiculo.getText();
@@ -321,6 +323,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         int id=Integer.parseInt(txtVehiculo.getText());
@@ -331,6 +334,7 @@ public class VentanaVehiculo extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String Vehiculo=txtVehiculo.getText();

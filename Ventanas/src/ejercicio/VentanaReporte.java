@@ -209,6 +209,7 @@ public class VentanaReporte extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String num=txtReporte.getText();
@@ -231,6 +232,7 @@ public class VentanaReporte extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String id = txtReporte.getText();
@@ -258,6 +260,7 @@ public class VentanaReporte extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String num=txtReporte.getText();
@@ -277,6 +280,10 @@ public class VentanaReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         int id=Integer.parseInt(txtReporte.getText());
         gestion.eliminado_universal(id,3);
         actualizarTabla();
@@ -289,6 +296,10 @@ public class VentanaReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketsActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtReporte.getText();
         int num=Integer.parseInt(id);
         Reporte p=gestion.reportes.get(gestion.buscador_universal(num,3));
@@ -300,6 +311,10 @@ public class VentanaReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTicketsActionPerformed
 
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtReporte.getText();
         if(!id.matches("[0-9]+")){
             id="";

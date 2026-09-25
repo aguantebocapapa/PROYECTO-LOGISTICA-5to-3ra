@@ -254,6 +254,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String paquete=txtPaquete.getText();
@@ -285,6 +286,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String id = txtPaquete.getText();
@@ -304,6 +306,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         int id=Integer.parseInt(txtPaquete.getText());
@@ -314,6 +317,7 @@ public class VentanaPaquete extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String paquete=txtPaquete.getText();
@@ -345,6 +349,10 @@ public class VentanaPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         int paq=Integer.parseInt(txtPaquete.getText());
         Paquete p=gestion.paquetes.get(gestion.buscador_universal(paq, 5));
         if(p!=null){
@@ -360,6 +368,10 @@ public class VentanaPaquete extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdd1ActionPerformed
 
     private void btnMosProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMosProActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         int paq=Integer.parseInt(txtPaquete.getText());
         Paquete p=gestion.paquetes.get(gestion.buscador_universal(paq, 5));
         p.mostrar_info();

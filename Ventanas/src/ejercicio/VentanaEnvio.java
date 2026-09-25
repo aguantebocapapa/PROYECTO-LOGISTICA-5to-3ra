@@ -278,6 +278,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String num=txtEnvio.getText();
@@ -315,6 +316,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String id = txtEnvio.getText();
@@ -334,6 +336,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String num=txtEnvio.getText();
@@ -371,6 +374,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         int id=Integer.parseInt(txtEnvio.getText());
@@ -386,6 +390,10 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
         int par=Integer.parseInt(txtPaquete.getText());
@@ -399,6 +407,10 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdd1ActionPerformed
 
     private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
         int par=Integer.parseInt(txtPaquete.getText());
@@ -412,6 +424,10 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdd2ActionPerformed
 
     private void btnPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaquetesActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
         Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
@@ -423,6 +439,10 @@ public class VentanaEnvio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaquetesActionPerformed
 
     private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
         Envio p=gestion.envios.get(gestion.buscador_universal(num,4));

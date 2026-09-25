@@ -5,6 +5,8 @@
  */
 package ejercicio;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Benjamin
@@ -179,6 +181,10 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaCliente ventanadatos=new VentanaCliente(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -186,6 +192,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaEmpleado ventanadatos=new VentanaEmpleado(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -199,6 +209,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvioActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaEnvio ventanadatos=new VentanaEnvio(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -206,6 +220,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnvioActionPerformed
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaReporte ventanadatos=new VentanaReporte(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -213,6 +231,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReporteActionPerformed
 
     private void btnAdheridoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdheridoActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaAdherido ventanadatos=new VentanaAdherido(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -220,6 +242,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdheridoActionPerformed
 
     private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaProducto ventanadatos=new VentanaProducto(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -227,6 +253,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoActionPerformed
 
     private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaTicket ventanadatos=new VentanaTicket(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -234,6 +264,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTicketActionPerformed
 
     private void btnPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaqueteActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaPaquete ventanadatos=new VentanaPaquete(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);
@@ -241,6 +275,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPaqueteActionPerformed
 
     private void btnVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoActionPerformed
+        if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         VentanaVehiculo ventanadatos=new VentanaVehiculo(this,gestion,contador);
         ventanadatos.setVisible(true);
         ventanadatos.setLocationRelativeTo(null);

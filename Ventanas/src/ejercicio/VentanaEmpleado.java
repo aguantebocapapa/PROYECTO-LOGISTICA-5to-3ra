@@ -264,6 +264,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }    
         int idempleado = Integer.parseInt(txtEmpleado.getText());
@@ -353,6 +354,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         String id = txtEmpleado.getText();
@@ -373,6 +375,7 @@ public class VentanaEmpleado extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }    
         int idempleado = Integer.parseInt(txtEmpleado.getText());
@@ -447,21 +450,18 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         
         gestion.editar_empleado(idempleado, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
         actualizarTabla();
-                if (contador >= 10){
-            System.exit(0);
-        }
+               
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         if (contador >= 10){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
         int id=Integer.parseInt(txtEmpleado.getText());
         gestion.eliminado_universal(id,2);
         actualizarTabla();
-        if (contador >= 10){
-            System.exit(0);
-        }
+        
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
