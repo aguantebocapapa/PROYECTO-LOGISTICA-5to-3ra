@@ -19,7 +19,7 @@
     <button onclick="window.open('Crear.html', '_self');">Crear cuenta</button>
     <script>
         var usuarios =JSON.parse(localStorage.getItem("lista"));
-        var Usuario = JSON.parse(localStorage.getItem("Emm"));
+        var Usuario = JSON.parse(localStorage.getItem("Emm")); //Emm=Entidad Minimamente Modificable
         function cargar_datos(){
             let ids=document.getElementById("Nombre").value;
             let contras=document.getElementById("contra").value;
@@ -27,7 +27,7 @@
             Nombre: ids,
             Contrasenia: contras
             };
-            localStorage.setItem("Emm", JSON.stringify(auxiliar));
+            localStorage.setItem("Emm", JSON.stringify(auxiliar)); //Emm=Entidad Minimamente Modificable
             window.open('index.html', '_self');
 
         }
