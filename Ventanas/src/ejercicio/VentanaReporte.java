@@ -215,8 +215,10 @@ public class VentanaReporte extends javax.swing.JFrame {
         String num=txtReporte.getText();
         String detail=txtDetalle.getText();
         if(!num.matches("[0-9]+")){
-            num="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Reporte solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if("".equals(num) || "".equals(detail)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -237,7 +239,9 @@ public class VentanaReporte extends javax.swing.JFrame {
         }
         String id = txtReporte.getText();
         if(!id.matches("[0-9]+")){
-            id="";
+            JOptionPane.showMessageDialog(null, "ERROR - El Reporte solo puede contener numeros.");
+            contador++;
+            return;
         }
         if("".equals(id)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -266,7 +270,9 @@ public class VentanaReporte extends javax.swing.JFrame {
         String num=txtReporte.getText();
         String detail=txtDetalle.getText();
         if(!num.matches("[0-9]+")){
-            num="";
+            JOptionPane.showMessageDialog(null, "ERROR - El Reporte solo puede contener numeros.");
+            contador++;
+            return;
         }
         if("".equals(num) || "".equals(detail)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
@@ -284,6 +290,7 @@ public class VentanaReporte extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
+        
         int id=Integer.parseInt(txtReporte.getText());
         gestion.eliminado_universal(id,3);
         actualizarTabla();
@@ -300,7 +307,18 @@ public class VentanaReporte extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
+        
         String id = txtReporte.getText();
+        if("".equals(id)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        if(!id.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El Reporte solo puede contener numeros.");
+            contador++;
+            return;
+        }
         int num=Integer.parseInt(id);
         Reporte p=gestion.reportes.get(gestion.buscador_universal(num,3));
         if(p!=null){
@@ -317,10 +335,27 @@ public class VentanaReporte extends javax.swing.JFrame {
         }
         String id = txtReporte.getText();
         if(!id.matches("[0-9]+")){
-            id="";
+            JOptionPane.showMessageDialog(null, "ERROR - El Reporte solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if("".equals(id)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
         }
         int num=Integer.parseInt(id);
         String id2 = txtTicket.getText();
+        if(!id2.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El Ticket solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if("".equals(id2)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
         int num2=Integer.parseInt(id2);
         Reporte p=gestion.reportes.get(gestion.buscador_universal(num,3));
         if(p!=null){
