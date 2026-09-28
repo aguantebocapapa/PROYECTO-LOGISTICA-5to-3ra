@@ -115,7 +115,7 @@
                     window.open('VerEnvio.html', '_self');
             }
         }); 
-        var Usuario = JSON.parse(localStorage.getItem("Emm"));
+        var Usuario = JSON.parse(localStorage.getItem("Emm")); //Emm=Entidad Minimamente Modificable
         var usuarios =JSON.parse(localStorage.getItem("lista"));
         if(Usuario.Nombre!=null){
             let total=usuarios.length;
