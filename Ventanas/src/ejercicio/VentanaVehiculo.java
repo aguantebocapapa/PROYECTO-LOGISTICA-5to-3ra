@@ -254,15 +254,21 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         String precio=txtPrecio.getText();
         String anio=txtAnio.getText();
         String tipo=txtTipo.getText();
-        if(!anio.matches("[0-9]+")){
-            anio="";
-        }
-        if(!precio.matches("[0-9]+")){
-            precio="";
-        }
         if(!Vehiculo.matches("[0-9]+")){
-            Vehiculo="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Vehiculo solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(!precio.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El precio solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(!anio.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El anio solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -276,7 +282,11 @@ public class VentanaVehiculo extends javax.swing.JFrame {
             contador++;
             return;
         }
-       
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+            contador++;
+            return;
+        }
         if(!modelo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
             JOptionPane.showMessageDialog(null, "ERROR - El campo modelo, solo puede contener letras");
             contador++;
@@ -304,8 +314,11 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         }
         String id = txtVehiculo.getText();
         if(!id.matches("[0-9]+")){
-            id="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Vehiculo solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        
         if("".equals(id)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -344,17 +357,29 @@ public class VentanaVehiculo extends javax.swing.JFrame {
         String anio=txtAnio.getText();
         String tipo=txtTipo.getText();
         if(!Vehiculo.matches("[0-9]+")){
-            Vehiculo="";
-        }
-        if(!anio.matches("[0-9]+")){
-            anio="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Vehiculo solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if(!precio.matches("[0-9]+")){
-            precio="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El precio solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(!anio.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El anio solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        
         if("".equals(Vehiculo) || "".equals(modelo) ||"".equals(marca) ||"".equals(precio)||"".equals(anio) ||"".equals(tipo) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
+            return;
+        }
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+            contador++;
             return;
         }
         int num=Integer.parseInt(Vehiculo);
