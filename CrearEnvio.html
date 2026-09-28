@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Crear envio</title>
+   
+</head>
+<body>
+    <button onclick="history.back()">Volver atrás</button>
+    <h1>Crear Envio : </h1>
+    <input id="Fecha" type="text" placeholder="Fecha">
+    <input id="Origen"  type="text" placeholder="Origen"> 
+    <input id="Destino" type="text" placeholder="Destino"> 
+    <input id="Estado"  type="text" placeholder="Estado">   
+    <button onclick="agregar_cuenta()"> Crear Envio</button>
+    <script>
+        var listaa=JSON.parse(localStorage.getItem("envios"));
+        function agregar_cuenta (){
+            let id=listaa.length
+            let id_nuevo=id+1;
+            let Fecha=document.getElementById("Fecha").value;
+            let origen=document.getElementById("Origen").value;
+            let destino=document.getElementById("Destino").value;
+            let Estado=document.getElementById("Estado").value;
+            let auxiliar = {"ID":id_nuevo,
+            "Fecha":Fecha,
+            "Origen":origen,
+            "Destino":destino,
+            "Estado":Estado};
+            listaa.push(auxiliar);
+            window.open('index.html', '_self');
+            localStorage.setItem("envios", JSON.stringify(listaa));
+        }
+
+    </script>        
+</body>
