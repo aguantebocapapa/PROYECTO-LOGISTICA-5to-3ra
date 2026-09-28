@@ -233,14 +233,20 @@ public class VentanaTicket extends javax.swing.JFrame {
         String pago=txtPago.getText();
         String cliente=txtCliente.getText();
         if(!Ticket.matches("[0-9]+")){
-            Ticket="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Ticket solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if(!total.matches("[0-9]+")){
-            total="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El total solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if(!cliente.matches("[0-9]+")){
-            cliente="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Cliente solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)||"".equals(cliente)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
@@ -276,16 +282,19 @@ public class VentanaTicket extends javax.swing.JFrame {
         }
         String id = txtTicket.getText();
         if(!id.matches("[0-9]+")){
-            id="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Ticket solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if("".equals(id)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
         int num=Integer.parseInt(id);
-        Ticket p=gestion.tickets.get(gestion.buscador_universal(num,9));
-        if(p!=null){
+        int indice=gestion.buscador_universal(num,9);
+        if(indice>=0){
+            Ticket p=gestion.tickets.get(indice);
             mostrar_ticket(p);
         }else{
             JOptionPane.showMessageDialog(null, "No existen registros con el codigo");
@@ -298,7 +307,18 @@ public class VentanaTicket extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }
-        int id=Integer.parseInt(txtTicket.getText());
+        String texto=txtTicket.getText();
+        if(!texto.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El Ticket solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if("".equals(texto)){
+             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             contador++;
+            return;
+        }
+        int id=Integer.parseInt(texto);
         gestion.eliminado_universal(id,9);
         actualizarTabla();
         
@@ -314,11 +334,15 @@ public class VentanaTicket extends javax.swing.JFrame {
         String total=txtTotal.getText();
         String pago=txtPago.getText();
         if(!Ticket.matches("[0-9]+")){
-            Ticket="";
-        }
-         if(!total.matches("[0-9]+")){
-            total="";
-        }
+            JOptionPane.showMessageDialog(null, "ERROR - El Ticket solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(!total.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El total solo puede contener numeros.");
+            contador++;
+            return;
+        } 
         if("".equals(Ticket) || "".equals(fecha) ||"".equals(total) ||"".equals(pago)  ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
