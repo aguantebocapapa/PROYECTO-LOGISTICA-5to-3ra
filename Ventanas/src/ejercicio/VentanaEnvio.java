@@ -454,7 +454,7 @@ public class VentanaEnvio extends javax.swing.JFrame {
         }
         String id = txtEnvio.getText();
         int num=Integer.parseInt(id);
-        int par=Integer.parseInt(txtPaquete.getText());
+        int par=Integer.parseInt(txtVehiculo.getText());
         Envio p=gestion.envios.get(gestion.buscador_universal(num,4));
         if(p!=null){
             Vehiculo sa=gestion.vehiculos.get(gestion.buscador_universal(par, 7));
