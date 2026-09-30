@@ -259,20 +259,52 @@ public class VentanaPaquete extends javax.swing.JFrame {
         }
         String paquete=txtPaquete.getText();
         String peso=txtPeso.getText();
-         if(!peso.matches("[0-9]+")){
-            peso="";
-        }
         String volumen=txtVolumen.getText();
-          if(!volumen.matches("[0-9]+")){
-            volumen="";
-        }
         String fecha=txtFecha.getText();
+        
+        //campos vacios
         if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicionales paquete (num/id paquete)
+        if(!paquete.matches("[0-9]+") && !paquete.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del paquete solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num=Integer.parseInt(paquete);
+        if(gestion.buscador_universal(num, 5) != -1){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del paquete ingresado ya existe.");
+            contador++;
+            return;
+        }
+        
+        //Condicionales peso
+        if (!peso.matches("[0-9]+([.][0-9]+)?") && !peso.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El peso solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }
+        
+        
+        //condicionales volumen
+        if (!volumen.matches("[0-9]+([.][0-9]+)?") && !volumen.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El volumen solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }        
+        
+        
+        //Condicionales fecha
+        if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}") && !fecha.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - La fecha debe tener el formato AAAA-MM-DD.");
+            contador++;
+            return;
+        }     
+        
         double num2=Double.parseDouble(peso);
         double num3=Double.parseDouble(volumen);
         Paquete p=new Paquete(num,num2,num3,fecha);
@@ -322,20 +354,48 @@ public class VentanaPaquete extends javax.swing.JFrame {
         }
         String paquete=txtPaquete.getText();
         String peso=txtPeso.getText();
-          if(!peso.matches("[0-9]+")){
-            peso="";
-        }
         String volumen=txtVolumen.getText();
-        if(!volumen.matches("[0-9]+")){
-            volumen="";
-        }
         String fecha=txtFecha.getText();
+        
+        //campos vacios
         if("".equals(paquete) || "".equals(peso) ||"".equals(volumen) ||"".equals(fecha)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicionales paquete (num/id paquete)
+        if(!paquete.matches("[0-9]+") && !paquete.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del paquete solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num=Integer.parseInt(paquete);
+        
+        //Condicionales peso
+        if (!peso.matches("[0-9]+([.][0-9]+)?") && !peso.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El peso solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }
+        
+        
+        //condicionales volumen
+        if (!volumen.matches("[0-9]+([.][0-9]+)?") && !volumen.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El volumen solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }        
+        
+        
+        //Condicionales fecha
+        if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}") && !fecha.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - La fecha debe tener el formato AAAA-MM-DD.");
+            contador++;
+            return;
+        }    
+        
+        
         double num2=Double.parseDouble(peso);
         double num3=Double.parseDouble(volumen);
         gestion.editar_paquete(num, num2, num3, fecha);

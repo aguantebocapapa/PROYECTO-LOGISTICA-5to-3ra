@@ -282,29 +282,53 @@ public class VentanaEnvio extends javax.swing.JFrame {
             System.exit(0);
         }
         String num=txtEnvio.getText();
-          if(!num.matches("[0-9]+")){
-            num="";
-        }
         String fecha=txtFecha.getText();
         String origen=txtOrigen.getText();
         String destino=txtDestino.getText();
+        
+        //campos vacios
         if("".equals(num) || "".equals(fecha) ||"".equals(origen) ||"".equals(destino) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicionales num (id envio)
+        if(!num.matches("[0-9]+") && !num.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de envio solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num2=Integer.parseInt(num);
+        if(gestion.buscador_universal(num2, 4) != -1){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de envio ingresado ya existe.");
+            contador++;
+            return;
+        } 
+        
+        // condicionales fecha
+        if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}") && !fecha.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - La fecha debe tener el formato AAAA-MM-DD.");
+            contador++;
+            return;
+        }        
+        
+        //Condicional origen        
         if(!origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'origen' solo puede contener letras");
             contador++;
             return;
         }
        
+        
+        //Condicionales destino
         if(!destino.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'destino' solo puede contener letras");
             contador++;
             return;
         }
+        
+        
         Envio en=new Envio(num2,fecha,origen,destino);
         gestion.agregarEnvio(en);
         txtEnvio.setText("");
@@ -340,26 +364,43 @@ public class VentanaEnvio extends javax.swing.JFrame {
             System.exit(0);
         }
         String num=txtEnvio.getText();
-          if(!num.matches("[0-9]+")){
-            num="";
-        }
         String fecha=txtFecha.getText();
         String origen=txtOrigen.getText();
         String destino=txtDestino.getText();
+        
+        //campos vacios
         if("".equals(num) || "".equals(fecha) ||"".equals(origen) ||"".equals(destino) ){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicionales num (id envio)
+        if(!num.matches("[0-9]+") && !num.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de envio solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num2=Integer.parseInt(num);
+        
+        // condicionales fecha
+        if (!fecha.matches("\\d{4}-\\d{2}-\\d{2}") && !fecha.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - La fecha debe tener el formato AAAA-MM-DD.");
+            contador++;
+            return;
+        }        
+        
+        //Condicional origen        
         if(!origen.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'origen' solo puede contener letras");
             contador++;
             return;
         }
        
+        
+        //Condicionales destino
         if(!destino.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'destino' solo puede contener letras");
             contador++;
             return;
         }

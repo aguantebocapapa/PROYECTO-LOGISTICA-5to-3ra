@@ -263,33 +263,63 @@ public class VentanaProducto extends javax.swing.JFrame {
         String marca=txtMarca.getText();
         String descripcion=txtDescripcion.getText();
         String precio=txtPrecio.getText();
-         if(!precio.matches("[0-9]+")){
-            precio="";
-        }
         String stock=txtStock.getText();
-         if(!stock.matches("[0-9]+")){
-            stock="";
-        }
         String tipo=txtTipo.getText();
+        
+        //campos vacios
         if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicional producto (id)
+        if(!Producto.matches("[0-9]+") && !Producto.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del producto solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num=Integer.parseInt(Producto);
-        int num2=Integer.parseInt(stock);
-        double num3=Double.parseDouble(precio);
+        if(gestion.buscador_universal(num, 6) != -1){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del producto ingresado ya existe.");
+            contador++;
+            return;
+        }
+        
+        //condicional marca
         if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo Marca solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'marca' solo puede contener letras");
             contador++;
             return;
         }
        
-        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+        //condicional precio
+        if (!precio.matches("[0-9]+([.][0-9]+)?") && !precio.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El precio solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }        
+        
+        
+        //condicional stock
+        if(!stock.matches("[0-9]+") && !stock.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El stock solo puede contener numeros enteros.");
             contador++;
             return;
         }
+        
+        //condicional tipo
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'tipo' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        
+        int num2=Integer.parseInt(stock);
+        double num3=Double.parseDouble(precio);
+
+
         Producto en=new Producto(num,marca,descripcion,num3,num2,tipo);
         gestion.agregarProducto(en);
         txtProducto.setText("");
@@ -341,34 +371,57 @@ public class VentanaProducto extends javax.swing.JFrame {
         String marca=txtMarca.getText();
         String descripcion=txtDescripcion.getText();
         String precio=txtPrecio.getText();
-         if(!precio.matches("[0-9]+")){
-            precio="";
-        }
-        
         String stock=txtStock.getText();
-         if(!stock.matches("[0-9]+")){
-            stock="";
-        }
         String tipo=txtTipo.getText();
+        
+        
+        //campos vacios
         if("".equals(Producto) || "".equals(marca) ||"".equals(descripcion) ||"".equals(precio)||"".equals(stock) ||"".equals(tipo)){
              JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
              contador++;
             return;
         }
+        
+        //condicional producto (id)
+        if(!Producto.matches("[0-9]+") && !Producto.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID del producto solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
         int num=Integer.parseInt(Producto);
-        int num2=Integer.parseInt(stock);
-        double num3=Double.parseDouble(precio);
+        
+        //condicional marca
         if(!marca.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo Marca solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'marca' solo puede contener letras");
             contador++;
             return;
         }
        
-        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo tipo, solo puede contener letras");
+        //condicional precio
+        if (!precio.matches("[0-9]+([.][0-9]+)?") && !precio.equals("")) {
+            JOptionPane.showMessageDialog(null, "ERROR - El precio solo puede contener un numero decimal (si necesita, use . y no ,).");
+            contador++;
+            return;
+        }        
+        
+        
+        //condicional stock
+        if(!stock.matches("[0-9]+") && !stock.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El stock solo puede contener numeros enteros.");
             contador++;
             return;
         }
+        
+        //condicional tipo
+        if(!tipo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'tipo' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        
+        int num2=Integer.parseInt(stock);
+        double num3=Double.parseDouble(precio);        
         gestion.editar_producto(num, marca, descripcion, num3, num2, tipo);
         
     }//GEN-LAST:event_btnEditarActionPerformed

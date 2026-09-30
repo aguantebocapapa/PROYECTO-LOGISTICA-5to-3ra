@@ -267,76 +267,104 @@ public class VentanaEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }    
-        int idempleado = Integer.parseInt(txtEmpleado.getText());
+        
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String dni = txtDni.getText();
-          if(!dni.matches("[0-9]+")){
-            dni="";
-        }
         String email = txtEmail.getText();
         String numero_telefono = txtTelefono.getText();
-          if(!numero_telefono.matches("[0-9]+")){
-            numero_telefono="";
-        }
+        String idempleado = txtEmpleado.getText();
         String sector = txtSector.getText();
         String cargo = txtCargo.getText();
         String rol = txtRol.getText();
         
+        
+        //CAMPOS VACIOS
         if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(email) || "".equals(numero_telefono)||"".equals(idempleado)||"".equals(sector)||"".equals(cargo)||"".equals(rol) ){
-             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             JOptionPane.showMessageDialog(null, "ERROR - Los campos no pueden estar vacios.");
              contador++;
             return;
         }
 
-        
-        if(dni.length()!=8){
-            JOptionPane.showMessageDialog(null, "ERROR - El dni debe tener solo 8 digitos");
-            contador++;
-            return;
-        }
-       if(numero_telefono.length()!=11){
-            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 11 digitos");
-            contador++;
-            return;
-        }
+        // condicionales nombre
         if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo nombre solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'nombre' solo puede contener letras");
             contador++;
             return;
         }
-       
+        
+        // condicionales Apellido
         if(!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo apellido, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El apellido solo puede contener letras");
             contador++;
             return;
         }
         
-        if(!sector.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo sector, solo puede contener letras");
+        // condicionales DNI
+        if(!dni.matches("[0-9]+") && !dni.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El DNI solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(dni.length()!=8){
+            JOptionPane.showMessageDialog(null, "ERROR - El DNI debe tener solo 8 digitos");
             contador++;
             return;
         }
         
-        if(!cargo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo cargo, solo puede contener letras");
-            contador++;
-            return;
-        }
-        
-        if(!rol.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo rol, solo puede contener letras");
-            contador++;
-            return;
-        }
-        
+        // condicionales email
         if(!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
             JOptionPane.showMessageDialog(null, "ERROR - Ingrese un correo electronico valido");
             contador++;
             return;
         }
         
-        Empleado nueva_persona = new Empleado(idempleado, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
+        // condicionales telefono
+        if(!numero_telefono.matches("[0-9]+") && !numero_telefono.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de telefono solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(numero_telefono.length()!=11 && numero_telefono.length()!=10){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de telefono debe contar con 10 u 11 digitos");
+            contador++;
+            return;
+        }
+        
+        
+        // condicionales idempleado 
+        if(!idempleado.matches("[0-9]+") && !idempleado.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
+        int emp=Integer.parseInt(idempleado);
+        if(gestion.buscador_universal(emp, 2) != -1){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID ingresado ya existe.");
+            contador++;
+            return;
+        } 
+        
+        //condicional sector
+        if(!sector.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'sector', solo puede contener letras");
+            contador++;
+            return;
+        }
+        //Condicional cargo
+        if(!cargo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'cargo' solo puede contener letras");
+            contador++;
+            return;
+        }
+        //Condicional rol
+        if(!rol.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'rol' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        Empleado nueva_persona = new Empleado(emp, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
         gestion.agregarEmpleado(nueva_persona);
        
         JOptionPane.showMessageDialog(null, "Empleado registrado exitosamente !");
@@ -349,7 +377,6 @@ public class VentanaEmpleado extends javax.swing.JFrame {
         txtSector.setText("");
         txtCargo.setText("");
         txtRol.setText("");
-        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -378,77 +405,98 @@ public class VentanaEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
             System.exit(0);
         }    
-        int idempleado = Integer.parseInt(txtEmpleado.getText());
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String dni = txtDni.getText();
-          if(!dni.matches("[0-9]+")){
-            dni="";
-        }
         String email = txtEmail.getText();
         String numero_telefono = txtTelefono.getText();
-          if(!numero_telefono.matches("[0-9]+")){
-            numero_telefono="";
-        }
+        String idempleado = txtEmpleado.getText();
         String sector = txtSector.getText();
         String cargo = txtCargo.getText();
         String rol = txtRol.getText();
         
+        
+        //CAMPOS VACIOS
         if("".equals(nombre) || "".equals(dni) ||"".equals(apellido) ||"".equals(email) || "".equals(numero_telefono)||"".equals(idempleado)||"".equals(sector)||"".equals(cargo)||"".equals(rol) ){
-             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+             JOptionPane.showMessageDialog(null, "ERROR - Los campos no pueden estar vacios.");
              contador++;
             return;
-            
         }
 
-        
-        if(dni.length()!=8){
-            JOptionPane.showMessageDialog(null, "ERROR - El dni debe tener solo 8 digitos");
-            contador++;
-            return;
-        }
-       if(numero_telefono.length()!=11){
-            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 11 digitos");
-            contador++;
-            return;
-        }
+        // condicionales nombre
         if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo nombre solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'nombre' solo puede contener letras");
             contador++;
             return;
         }
-       
+        
+        // condicionales Apellido
         if(!apellido.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo apellido, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El apellido solo puede contener letras");
             contador++;
             return;
         }
         
-        if(!sector.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo sector, solo puede contener letras");
+        // condicionales DNI
+        if(!dni.matches("[0-9]+") && !dni.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El DNI solo puede contener numeros.");
+            contador++;
+            return;
+        } 
+        if(dni.length()!=8){
+            JOptionPane.showMessageDialog(null, "ERROR - El DNI debe tener solo 8 digitos");
             contador++;
             return;
         }
         
-        if(!cargo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo cargo, solo puede contener letras");
-            contador++;
-            return;
-        }
-        
-        if(!rol.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo rol, solo puede contener letras");
-            contador++;
-            return;
-        }
-        
+        // condicionales email
         if(!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")){
             JOptionPane.showMessageDialog(null, "ERROR - Ingrese un correo electronico valido");
             contador++;
             return;
         }
         
-        gestion.editar_empleado(idempleado, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
+        // condicionales telefono
+        if(!numero_telefono.matches("[0-9]+") && !numero_telefono.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de telefono solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(numero_telefono.length()!=11 && numero_telefono.length()!=10){
+            JOptionPane.showMessageDialog(null, "ERROR - El numero de telefono debe contar con 10 u 11 digitos");
+            contador++;
+            return;
+        }
+        
+        
+        // condicionales idempleado 
+        if(!idempleado.matches("[0-9]+") && !idempleado.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID solo puede contener numeros enteros.");
+            contador++;
+            return;
+        }
+        int emp=Integer.parseInt(idempleado);
+        
+        //condicional sector
+        if(!sector.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'sector', solo puede contener letras");
+            contador++;
+            return;
+        }
+        //Condicional cargo
+        if(!cargo.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'cargo' solo puede contener letras");
+            contador++;
+            return;
+        }
+        //Condicional rol
+        if(!rol.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'rol' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        gestion.editar_empleado(emp, sector, cargo, rol, nombre,apellido,dni,email,numero_telefono);
         actualizarTabla();
                
     }//GEN-LAST:event_btnEditarActionPerformed

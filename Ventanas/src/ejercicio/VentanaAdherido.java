@@ -291,26 +291,69 @@ public class VentanaAdherido extends javax.swing.JFrame {
         String direccion=txtDireccion.getText();
         String rubro=txtRubro.getText();
         String telefono=txtTelefono.getText();
-        if(!cuil.matches("[0-9]+") ||!telefono.matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(null, "Inhhreso");
-            cuil="";
-            telefono="";
-        } 
         String duenio=txtDuenio.getText();
-        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
-             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+        
+        // CAMPOS VACIOS
+        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion) || "".equals(rubro)||"".equals(telefono)  ||"".equals(duenio)){
+             JOptionPane.showMessageDialog(null, "ERROR - Los campos no pueden estar vacios.");
              contador++;
+            return;
+        }        
+        
+        // condicionales empresa adherida (id)  
+        if(!Empresa.matches("[0-9]+") && !Empresa.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID de la empresa adherida solo puede contener numeros enteros.");
+            contador++;
             return;
         }
         int num2=Integer.parseInt(Empresa);
+        if(gestion.buscador_universal(num2, 8) != -1){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID de empresa adherida ingresado ya existe.");
+            contador++;
+            return;
+        }  
+        
+        // condicionales nombre
         if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo Nombre solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'nombre' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        //condicionales CUIL        
+        if(!cuil.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El CUIL solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(cuil.length()!=11){
+            JOptionPane.showMessageDialog(null, "ERROR - El CUIL debe tener solo 11 digitos");
             contador++;
             return;
         }
        
+        // condicionales rubro
+        if(!rubro.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'rubro' solo puede contener letras");
+            contador++;
+            return;
+        }
+                  
+        // condicionales telefono
+        if(!telefono.matches("[0-9]+") && !telefono.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(telefono.length()!=11 && telefono.length()!=10){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 10 u 11 digitos");
+            contador++;
+            return;
+        }
+        
+        //Condicionales dueño
         if(!duenio.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo Duenio, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'duenio' solo puede contener letras");
             contador++;
             return;
         }
@@ -338,30 +381,67 @@ public class VentanaAdherido extends javax.swing.JFrame {
         String Empresa=txtEmpresa.getText();
         String nombre=txtNombre.getText();
         String cuil=txtCuil.getText();
-        if(!cuil.matches("[0-9]+")){
-            cuil="";
-        } 
         String direccion=txtDireccion.getText();
         String rubro=txtRubro.getText();
         String telefono=txtTelefono.getText();
-        if(!telefono.matches("[0-9]+")){
-            telefono="";
-        } 
         String duenio=txtDuenio.getText();
-        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion)||"".equals(rubro) ||"".equals(telefono) ||"".equals(duenio)){
-             JOptionPane.showMessageDialog(null, "ERROR - No pueden estar vacios los campos");
+        
+        // CAMPOS VACIOS
+        if("".equals(Empresa) || "".equals(nombre) ||"".equals(cuil) ||"".equals(direccion) || "".equals(rubro)||"".equals(telefono)  ||"".equals(duenio)){
+             JOptionPane.showMessageDialog(null, "ERROR - Los campos no pueden estar vacios.");
              contador++;
+            return;
+        }        
+        
+        // condicionales empresa adherida (id)  
+        if(!Empresa.matches("[0-9]+") && !Empresa.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El ID de la empresa adherida solo puede contener numeros enteros.");
+            contador++;
             return;
         }
         int num2=Integer.parseInt(Empresa);
+        
+        // condicionales nombre
         if(!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo origen solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'nombre' solo puede contener letras");
+            contador++;
+            return;
+        }
+        
+        //condicionales CUIL        
+        if(!cuil.matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El CUIL solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(cuil.length()!=11){
+            JOptionPane.showMessageDialog(null, "ERROR - El CUIL debe tener solo 11 digitos");
             contador++;
             return;
         }
        
+        // condicionales rubro
+        if(!rubro.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'rubro' solo puede contener letras");
+            contador++;
+            return;
+        }
+                  
+        // condicionales telefono
+        if(!telefono.matches("[0-9]+") && !telefono.equals("")){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono solo puede contener numeros.");
+            contador++;
+            return;
+        }
+        if(telefono.length()!=11 && telefono.length()!=10){
+            JOptionPane.showMessageDialog(null, "ERROR - El telefono debe contar con 10 u 11 digitos");
+            contador++;
+            return;
+        }
+        
+        //Condicionales dueño
         if(!duenio.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
-            JOptionPane.showMessageDialog(null, "ERROR - El campo destino, solo puede contener letras");
+            JOptionPane.showMessageDialog(null, "ERROR - El campo 'duenio' solo puede contener letras");
             contador++;
             return;
         }
