@@ -120,6 +120,10 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIncicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncicioActionPerformed
+        if (contador >= 3){
+            JOptionPane.showMessageDialog(null,"Se ha llegado al maximo cupo de errores, por consiguiente el programa se reiniciara");
+            System.exit(0);
+        }
         String nombre=txtUsuario.getText();
         String contrasenia=txtContra.getText();
         if(nombre.equals("admin")&& contrasenia.equals("1234")){
@@ -131,6 +135,7 @@ public class Inicio extends javax.swing.JFrame {
             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "No es correcto el usuario ni la contraseña");
+            contador++;
         }
     }//GEN-LAST:event_btnIncicioActionPerformed
 
