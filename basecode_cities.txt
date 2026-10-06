@@ -1,0 +1,27 @@
+public void cargarCiudades() {
+    // 1. Limpias el combo box que creaste en el diseño
+    jComboBox1.removeAllItems();
+    
+    // Configura tus datos de conexión aquí
+    String url = "jdbc:mysql://localhost:3306/logistica32";
+    String usuario = "root";
+    String contrasenia = "";
+    String sql = "SELECT nombre FROM ciudades"; 
+    
+    try {
+        Connection con = DriverManager.getConnection(url, usuario, contrasenia);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        
+        // 2. Llenas tu jComboBox1 con los datos de la BD
+        while (rs.next()) {
+            jComboBox1.addItem(rs.getString("nombre"));
+        }
+        
+        rs.close();
+        st.close();
+        con.close();
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar ciudades: " + e.getMessage());
+    }
