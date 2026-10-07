@@ -68,6 +68,20 @@ foreign key (ID_Empresa) references Empresa_Adherida(ID_Empresa),
 foreign key (ID_Cliente) references Clientes(ID_Cliente)
 );
 
+create table Envios_eliminados(
+ID_Envio_eliminado int unsigned auto_increment primary key,
+Fecha_eliminado date,
+Origen_eliminado int unsigned,
+Destino_eliminado int unsigned,
+ID_Empresa_eliminado int unsigned,
+estado_eliminado varchar(50),
+ID_Cliente_eliminado int unsigned,
+foreign key (Origen_eliminado) references Ciudades(ID_Ciudad),
+foreign key (Destino_eliminado) references Ciudades(ID_Ciudad),
+foreign key (ID_Empresa_eliminado) references Empresa_Adherida(ID_Empresa),
+foreign key (ID_Cliente_eliminado) references Clientes(ID_Cliente)
+);
+
 create table Empleados(
 ID_Empleado int unsigned auto_increment primary key,
 Nombre varchar(50),
