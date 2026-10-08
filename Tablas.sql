@@ -64,6 +64,16 @@ telefono int (10),
 direccion varchar(1000),
 cod_postal int(4)
 );
+CREATE TABLE Clientes_Historico_Borrados (
+    ID_Historico INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Cliente INT,
+    Nombre VARCHAR(50),
+    Apellido VARCHAR(50),
+    DNI INT,
+    Fecha_Baja date
+);
+
+
 
 create table Envios(
 ID_Envio int unsigned auto_increment primary key,
