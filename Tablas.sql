@@ -12,6 +12,17 @@ create table Empresa_Adherida(
     duenio varchar(50)    
 );
 
+create table Empresa_Adherida_eliminada(
+	ID_empresa_eliminada int unsigned auto_increment primary key,
+    nombre_eliminado varchar(50),
+    cuit_eliminado varchar(13),
+    direccion_eliminada varchar(100),
+    telefono_eliminado int (10),
+    rubro_eliminado varchar(100),
+    duenio_eliminado varchar(50)    
+);
+
+
 create table Productos(
 ID_Producto int unsigned auto_increment primary key,
 marca varchar(200),
