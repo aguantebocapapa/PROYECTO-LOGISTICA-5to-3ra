@@ -1,4 +1,4 @@
-/*
+*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -58,7 +58,7 @@ public class ClienteDAO {
                     p.setDni(resultado.getString("Dni"));
                     p.setEmail(resultado.getString("email"));
                     p.setNumero_telefono(resultado.getString("telefono"));
-                    p.setCod_postal(resultado.getString("codigo"));
+                    p.setCod_postal(resultado.getString("cod_postal"));
                     p.setDireccion(resultado.getString("direccion"));
                     clientes.add(p);
                     System.out.println("------------------");
@@ -87,7 +87,7 @@ public class ClienteDAO {
                     p.setDni(resultado.getString("Dni"));
                     p.setEmail(resultado.getString("email"));
                     p.setNumero_telefono(resultado.getString("telefono"));
-                    p.setCod_postal(resultado.getString("codigo"));
+                    p.setCod_postal(resultado.getString("cod_postal"));
                     p.setDireccion(resultado.getString("direccion"));
             
             System.out.println("------------------");
@@ -123,7 +123,7 @@ public class ClienteDAO {
 }
     
    public void actualizar(Cliente c) {
-    String consulta_sql = "call editar_cliente(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+    String consulta_sql = "call editar_cliente(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     try {
         Connection conexion = Conexion.conectar();
