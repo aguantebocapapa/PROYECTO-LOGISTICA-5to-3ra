@@ -53,6 +53,16 @@ ID_Ciudad int unsigned auto_increment primary key,
 Nombre varchar(50),
 Provincia varchar(50)
 );
+CREATE TABLE Ciudades_Historico_Cambios (
+    ID_Historico INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Ciudad INT,
+    Nombre_Viejo VARCHAR(50),
+    Nombre_Nuevo VARCHAR(50),
+    Provincia_Vieja VARCHAR(50),
+    Provincia_Nueva VARCHAR(50),
+    Fecha_Modificacion DATE
+);
+
 
 create table Clientes(
 ID_Cliente int unsigned auto_increment primary key,
