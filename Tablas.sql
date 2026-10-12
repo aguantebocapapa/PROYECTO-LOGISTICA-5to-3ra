@@ -99,6 +99,12 @@ foreign key (ID_Empresa) references Empresa_Adherida(ID_Empresa),
 foreign key (ID_Cliente) references Clientes(ID_Cliente)
 );
 
+create table envios_origenes(
+	id_aux int auto_increment primary key,
+	id_envio int not null,
+	origen int not null
+);
+
 create table Envios_eliminados(
 ID_Envio_eliminado int unsigned auto_increment primary key,
 Fecha_eliminado date,
