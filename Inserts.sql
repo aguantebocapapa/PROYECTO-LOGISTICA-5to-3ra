@@ -1,3 +1,8 @@
+insert into usuarios(nombre,apellido,email,contrasenia) values
+("Penelope" , "Stilkton","pensti@gmail.com","1234"),
+("Ricardo" , "Servente","Ricki@gmail.com","2323"),
+("Santiago" , "quiroga","sango@gmail.com","5251"),
+("Cretacico" , "Pulido","asas@gmail.com","0000");
 CALL agregar_empleados('Carlos', 'Gómez', 32451892, 'carlos.gomez01@logistica.com', 11456701, null, null, null, @mensaje); 
 CALL agregar_empleados('María', 'Fernández', 28912304, 'maria.fernandez02@logistica.com', 11456702, null, null, null, @mensaje); 
 CALL agregar_empleados('Juan', 'Pérez', 41058291, 'juan.perez03@logistica.com', 11456703, null, null, null, @mensaje); 
