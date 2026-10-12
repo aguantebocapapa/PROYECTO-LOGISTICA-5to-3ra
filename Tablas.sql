@@ -2,6 +2,15 @@ drop database if exists Logistica32;
 create database Logistica32;
 use Logistica32;
 
+
+create table usuarios(
+	id_usuario int auto_increment primary key,
+	nombre varchar(100) not null,
+	apellido varchar(100) not null,
+	email varchar(100) not null,
+	contrasenia varchar(500) not null
+);
+
 create table Empresa_Adherida(
 	ID_empresa int unsigned auto_increment primary key,
     nombre varchar(50),
