@@ -1,0 +1,14 @@
+-- 1. Elimina por completo cualquier rastro del usuario viejo
+DROP USER IF EXISTS 'Java'@'localhost';
+
+-- 2. Limpia la memoria caché de privilegios de MySQL
+FLUSH PRIVILEGES;
+
+-- 3. Crea el usuario nuevamente (ya no debería dar error)
+CREATE USER 'Java'@'localhost' IDENTIFIED BY '1111';
+
+-- 4. Otorga el permiso que necesitabas (con el host idéntico)
+GRANT EXECUTE ON logistica32.* TO 'Java'@'localhost';
+
+-- 5. Guarda los cambios definitivamente
+FLUSH PRIVILEGES;
