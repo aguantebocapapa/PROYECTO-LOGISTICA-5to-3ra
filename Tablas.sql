@@ -79,7 +79,7 @@ Nombre varchar(50),
 Apellido varchar(50),
 DNI int(8),
 email varchar(50),
-telefono int (10),
+telefono int (11),
 direccion varchar(1000),
 cod_postal int(4)
 );
@@ -134,7 +134,7 @@ Nombre varchar(50),
 Apellido varchar(50),
 Dni int(8),
 email varchar(100),
-telefono int (10),
+telefono int (11),
 sector varchar(100),
 cargo varchar(100),
 rol varchar(100)
