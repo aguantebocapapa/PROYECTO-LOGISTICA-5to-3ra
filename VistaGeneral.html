@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    
+    <title>Document</title>
+     <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            color: white;
+            background-color: rgba(134, 173, 204, 0.288);
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        body{
+            background: linear-gradient(rgb(201, 188, 14),rgb(73, 72, 73));
+        }
+        .navbar{
+            background-color: white;
+        }
+        button{
+            background: linear-gradient(white,gray);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- BARRA DE BUSQUEDA -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand"  onclick="window.open('index.html','_self')">
+                
+            Logistica
+            </a>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="window.open('VerEnvios.html', '_self');">Ver envios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="alert('Numero de  telefono : +54 911 6767 6767 \nCorreo electronico : logistica32@gmail.com  \nNombre de contacto:Logistica 32 Equipo 6')">Contacto</a>
+            </li>
+            <button id="nombre_inicio" type="button" class="btn" aria-current="page" onclick="window.open('Inicio_sesion.html', '_self');">Iniciar sesion</button>
+        </div>
+    </nav>
+    <button  onclick="activar()" style="position:fixed; right: 10px;"> Refresque automatico Activar/Desactivar</button>
+   <table id="usuarios">
+    <thead>
+        <tr>
+            <th colspan="5" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Usuarios Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Contrasenia</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    <table id="Adheridos">
+    <thead>
+         <tr>
+            <th colspan="7" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Adheridos Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la Empresa</th>
+            <th>Nombre</th>
+            <th>Cuit</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Rubro</th>
+            <th>Dueño</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+    <table id="Productos">
+    <thead>
+         <tr>
+            <th colspan="6" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Productos Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Producto</th>
+            <th>Marca</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Paquetes">
+    <thead>
+         <tr>
+            <th colspan="4" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Paquetes Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Paquete</th>
+            <th>Peso</th>
+            <th>Volumen</th>
+            <th>Fecha de Ensamble</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Paquetes_Productos">
+    <thead>
+         <tr>
+            <th colspan="4" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Productos por paquete Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la union</th>
+            <th>Identificador del Producto</th>
+            <th>Identificador del Paquete</th>
+            <th>Cantidad del producto</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Ciudades">
+    <thead>
+         <tr>
+            <th colspan="3" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Ciudades Registradas
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la Ciudad</th>
+            <th>Nombre</th>
+            <th>Provincia</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Clientes">
+    <thead>
+         <tr>
+            <th colspan="6" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Clientes Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Cliente</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dni</th>
+            <th>Email</th>
+            <th>Codigo postal</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Envios">
+    <thead>
+         <tr>
+            <th colspan="7" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Envios Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Envio</th>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Empresa adherida</th>
+            <th>Estado</th>
+            <th>Cliente del envio</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Empleados">
+    <thead>
+         <tr>
+            <th colspan="9" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Empleados Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Empleado</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Dni</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Sector</th>
+            <th>Cargo</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Vehiculos">
+    <thead>
+         <tr>
+            <th colspan="4" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Vehiculos Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Vehiculo</th>
+            <th>Precio</th>
+            <th>Año</th>
+            <th>Empleado</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Envio_vehiculos">
+    <thead>
+         <tr>
+            <th colspan="3" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Vehiculos por envio Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la Union</th>
+            <th>Identificador del envio</th>
+            <th>Identificador del vehiculo</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Envio_Paquetes">
+    <thead>
+         <tr>
+            <th colspan="3" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Paquetes por envio Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la Union</th>
+            <th>Identificador del envio</th>
+            <th>Identificador del paquete</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Reportes">
+    <thead>
+         <tr>
+            <th colspan="2" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Reportes Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Reporte</th>
+            <th>Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Tickets">
+    <thead>
+         <tr>
+            <th colspan="6" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Tickets Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Ticket</th>
+            <th>Identificador del Cliente</th>
+            <th>Fecha del ticket</th>
+            <th>Detalle </th>
+            <th>Total: </th>
+            <th>Metodo de pago: </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Reportes_tickets">
+    <thead>
+         <tr>
+            <th colspan="3" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Tickets por reporte Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador de la Union</th>
+            <th>Identificador del Reporte</th>
+            <th>Identificador del Ticket</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<table id="Almacenes">
+    <thead>
+         <tr>
+            <th colspan="4" style="text-align: center; font-size: 1.2em; background-color: #f2f2f269; border: 1px solid #ddd; padding: 10px;">
+                Lista de Almacenes Registrados
+            </th>
+        </tr>
+        <tr>
+            <th>Identificador del Almacen</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+            <th>Nombre </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<button onclick="window.location.reload()">Refrescar(Para ver cambios)</button>
+</body>
+<script>
+    var estatus=JSON.parse(localStorage.getItem("estado"));
+    function activar(){
+        
+        if (typeof estatus === "undefined" || estatus === "No"){
+                let auxiliar="Yes";
+                localStorage.setItem("estado",JSON.stringify(auxiliar));
+                alert("Activado");
+                window.location.reload();
+        }else{
+            let auxiliar2="No";
+            localStorage.setItem("estado",JSON.stringify(auxiliar2));
+             alert("Desactivado");
+             window.location.reload();
+        }
+    }
+    if (estatus=="Yes"){
+        const cincoMinutos = 300000; 
+        setTimeout(function() {location.reload();}, cincoMinutos);
+    }
+</script>
+</html>
