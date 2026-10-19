@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar paquetes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <link href="../PROYECTO-LOGISTICA-5to-3ra-ProyectoInformatico2/general.css" > 
+</head>
+<body>
+
+   <!-- BARRA DE BUSQUEDA -->
+        <div class="fondo.navbar"> 
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand"  onclick="window.location.reload()">
+                        
+                    Logistica
+                    </a>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" onclick="window.open('VerEnvios.html', '_self');">Ver envios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" onclick="alert('Numero de  telefono : +54 911 6767 6767 \nCorreo electronico : logistica32@gmail.com  \nNombre de contacto:Logistica 32 Equipo 6')">Contacto</a>
+                    </li>
+                    <button id="nombre_inicio" type="button" class="btn" aria-current="page" onclick="window.open('Inicio_sesion.html', '_self');">Iniciar sesion</button>
+                </div>
+            </nav>
+        </div>
+
+    
+  <div class="fondo">  
+
+    <hr></hr>
+
+    <h1> Paquetes: </h1>  
+
+    <div class="mt-5">
+        <div class="table-responsive table-card">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Nro</th>
+                    <th scope="col">Id paquete</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Volumen</th>
+                    <th scope="col">Fecha de ensamble</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>5kg</td>
+                    <td>20 cm cubicos</td>
+                    <td>24/11/23</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>2</td>
+                    <td>500gr</td>
+                    <td>12cm cubicos</td>
+                    <td>21/2/26</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>3</td>
+                    <td>120gr</td>
+                    <td>10cm cubicos</td>
+                    <td>1/10/26</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

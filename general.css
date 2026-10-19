@@ -1,8 +1,30 @@
 .fondo{
     color: linear-gradient(rgb(201, 188, 14),rgb(73, 72, 73));
-
 }
 
 .texto-formulario{
     color:rgb(0, 0, 0)
+}
+
+.fondo.navbar{
+    color: white;
+}
+
+.formulario{
+    right:300px
+}
+
+.test_form{
+    width: 50% !important;
+}
+
+h1{
+    font-size: 18px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.separador{
+    width: 100%;
+    height: 100px;
 }
