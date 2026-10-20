@@ -6,7 +6,7 @@
     color:rgb(0, 0, 0)
 }
 
-.fondo.navbar{
+.fondo-navbar{
     color: white;
 }
 
@@ -32,4 +32,13 @@ h1{
 .texto-blanco{
     color:white !important;
     
+}
+
+.texto-negro{
+    color:rgb(0, 0, 0) !important;
+    
+}
+
+.fondo-blanco{
+    background-color: white;
 }
