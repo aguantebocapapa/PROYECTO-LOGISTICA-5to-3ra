@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Empresas Adheridas</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    
+   <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="general.css"> 
+</head>
+</head>
+<body>
+
+    <div class="fondo">
+
+     <!-- BARRA DE BUSQUEDA -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand"  onclick="window.open('index.html')">
+                
+            Logistica
+            </a>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="window.open('VerEnvios.html', '_self');">Ver envios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" onclick="alert('Numero de  telefono : +54 911 6767 6767 \nCorreo electronico : logistica32@gmail.com  \nNombre de contacto:Logistica 32 Equipo 6')">Contacto</a>
+            </li>
+            <button id="nombre_inicio" type="button" class="btn" aria-current="page" onclick="window.open('Inicio_sesion.html', '_self');">Iniciar sesion</button>
+        </div>
+    </nav>
+
+    <div class="separador">
+
+    </div>
+
+    <h1> Ingrese los datos de la Empresa Adherida</h1>
+
+    <br>
+      <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-5 col-lg-3 test_form">
+          <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+              <h4 class="texto-formulario mb-0 text-center" >Formulario de Registro</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="mb-3">
+                  <label for="Nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="Nombre" placeholder="" required>
+                </div>
+
+                
+                <div class="mb-3">
+                  <label for="Cuil" class="form-label">Cuil</label>
+                  <input type="number" class="form-control" id="Cuil" placeholder="" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Direccion" class="form-label">Direccion</label>
+                  <input type="text" class="form-control" id="Direccion" placeholder="" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Telefono" class="form-label">Telefono</label>
+                  <input type="number" class="form-control" id="Telefono" placeholder="" required>
+                </div>
+
+                
+                <div class="mb-3">
+                  <label for="Rubro" class="form-label">Rubro</label>
+                  <input type="text" class="form-control" id="Rubro" placeholder="Ej. Logistica" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Sector" class="form-label">Sector</label>
+                  <input type="text" class="form-control" id="Sector" placeholder="" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="Dueño" class="form-label">Dueño</label>
+                  <input type="text" class="form-control" id="Dueño" placeholder="" required>
+                </div>
+            
+                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    </div>
+
+    
+
+</body>
+</html>
