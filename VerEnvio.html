@@ -4,23 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerEnvio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="general.css">
 </head>
 <body>
-    <button onclick="history.back()">Volver atrás</button>
-    <h1>Envios  disponibles</h1>
-    <p id="mostrar"></p>
-    <script>
-        
-        var texto="";
-        var envioss =JSON.parse(localStorage.getItem("envios"));
-        var identificator=localStorage.getItem("Identificador");
-        envioss.forEach(element => {
-            if(element.ID==identificator){
-                texto=texto+"ID: "+element.ID+" Fecha: "+element.Fecha +" Origen: "+element.Origen+" Destino:"+element.Destino+" Estado: "+element.Estado+" \n";
-            }
-            
-        });
-        document.getElementById("mostrar").innerText=texto;
-    </script>
+    <!-- BARRA DE BUSQUEDA -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand"  onclick="window.open('index.html')">
+                
+            Logistica
+            </a>
+
+            <li class="nav-item">
+                <button type="button" class="btn" aria-current="page" href="#" onclick="window.open('VerEnvios.html', '_self');">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
+                  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+                  </svg>
+                  Ver envios</a>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn" onclick="alert('Numero de  telefono : +54 911 6767 6767 \nCorreo electronico : logistica32@gmail.com  \nNombre de contacto:Logistica 32 Equipo 6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                  </svg>
+                  Contacto</button>
+            </li>
+            <button id="nombre_inicio" type="button" class="btn" aria-current="page" onclick="window.open('Inicio_sesion.html', '_self');"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+              </svg>
+              Iniciar sesion</button>
+        </div>
+    </nav>
+
+    <button type="button" class="btn" onclick="history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+        </svg>
+        Volver atrás
+    </button>
+    <div class="fondo">  
+
+    <hr></hr>
+
+    <h1> Envios Disponibles: </h1>  
+
+    <div class="mt-5">
+        <div class="table-responsive table-card">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Nro</th>
+                    <th scope="col">Id paquete</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Volumen</th>
+                    <th scope="col">Fecha de ensamble</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>5kg</td>
+                    <td>20 cm cubicos</td>
+                    <td>24/11/23</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>2</td>
+                    <td>500gr</td>
+                    <td>12cm cubicos</td>
+                    <td>21/2/26</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>3</td>
+                    <td>120gr</td>
+                    <td>10cm cubicos</td>
+                    <td>1/10/26</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
