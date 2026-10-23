@@ -1,4 +1,5 @@
-DELIMITER //
+drop procedure agregar_productos_paquetes;
+agregar_productos_paquetes DELIMITER //
 CREATE PROCEDURE agregar_productos(
     IN marca VARCHAR(100),
     in descripcion varchar(200),
@@ -81,9 +82,9 @@ END //
 DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE agregar_productos_paquetes(
-    IN ID_Producto int,
-    in ID_Paquete int,
-    in cantidad int,
+    IN ID_Productos int,
+    in ID_Paquetes int,
+    in cantidads int,
     OUT mensaje VARCHAR(200)
 )
 BEGIN
@@ -96,7 +97,7 @@ BEGIN
     START TRANSACTION;
 
     INSERT INTO productos_paquetes ( ID_Producto, ID_Paquete ,cantidad)
-    VALUES (ID_Productos, ID_Paquetes ,cantidad);
+    VALUES (ID_Productos, ID_Paquetes ,cantidads);
 
     COMMIT;
     SET mensaje = 'Hecho con éxito';
