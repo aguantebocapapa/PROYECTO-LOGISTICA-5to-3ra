@@ -43,9 +43,9 @@ categoria varchar(50)
 
 create table Paquetes(
 ID_Paquete int unsigned auto_increment primary key,
-peso decimal(9,2),
-volumen decimal(9,2),
-fecha_ensamble date
+peso varchar(20),
+volumen varchar(20),
+fecha varchar(100)
 );
 
 create table Productos_Paquetes(
