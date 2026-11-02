@@ -45,7 +45,7 @@ create table Paquetes(
 ID_Paquete int unsigned auto_increment primary key,
 peso decimal(9,2),
 volumen decimal(9,2),
-fecha date
+fecha_ensamble date
 );
 
 create table Productos_Paquetes(
