@@ -1,4 +1,3 @@
-drop procedure agregar_productos_paquetes;
 agregar_productos_paquetes DELIMITER //
 CREATE PROCEDURE agregar_productos(
     IN marca VARCHAR(100),
