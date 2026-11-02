@@ -206,7 +206,7 @@ INSERT INTO Productos (marca, descripcion, precio, stock, categoria) VALUES
 ('Blem', 'Lustramuebles en Aerosol Lavanda', 5200.00, 80, 'Limpieza');
 
 
-INSERT INTO Paquetes (peso, volumen, fecha) VALUES 
+INSERT INTO Paquetes (peso, volumen, fecha_ensamble) VALUES 
 ('2.50', '0.15', '2026-03-01'), 
 ('12.30', '0.85', '2026-03-01'), 
 ('0.80', '0.05', '2026-03-02'), 
